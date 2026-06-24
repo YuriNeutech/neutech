@@ -1,0 +1,20 @@
+.line-post {
+    &__meta {
+        gap: 2.4rem;
+        margin-block-end: .8rem;
+        color: #666;
+    }
+
+    &__title {
+        text-transform: none;
+
+        @include media($bp-desktop) {
+            transition: color .3s ease-in-out;
+
+            @include hover {
+                color: $c-action;
+            }
+        }
+    }
+}
+// End inner

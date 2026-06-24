@@ -1,0 +1,81 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 2,
+    "settings": {
+        "appearanceTools": true,
+        "layout": {
+            "contentSize": "840px",
+            "wideSize": "1280px"
+        },
+        "typography": {
+            "fontSizes": [
+                {
+                    "slug": "h1",
+                    "name": "Heading 1",
+                    "size": "0.875rem"
+                }
+            ],
+            "fontFamilies": [
+                {
+                    "fontFamily": "Neue, sans-serif",
+                    "name": "Neue Montreal",
+                    "slug": "heading"
+                },
+                {
+                    "fontFamily": "Satoshi, sans-serif",
+                    "name": "Satoshi",
+                    "slug": "body"
+                }
+            ]
+        },
+        "color": {
+            "defaultPalette": false,
+            "palette": [
+                {
+                    "slug": "action",
+                    "color": "#EF3F50",
+                    "name": "Neon Red"
+                },
+                {
+                    "slug": "black",
+                    "color": "#000",
+                    "name": "Black"
+                },
+                {
+                    "slug": "gray",
+                    "color": "#BBB",
+                    "name": "Gray"
+                },
+                {
+                    "slug": "light",
+                    "color": "#F5F5F7",
+                    "name": "Light"
+                },
+                {
+                    "slug": "white",
+                    "color": "#FFF",
+                    "name": "White"
+                }
+            ]
+        }
+    },
+    "styles": {
+        "elements": {
+            "h1": {
+                "typography": { 
+                    "fontSize": "var(--fz-h1)",
+                    "fontFamily": "var(--wp--preset--font-family--heading)" 
+                }
+            },
+            "h2": {
+                "typography": { 
+                    "fontSize": "var(--fz-h2)",
+                    "fontFamily": "var(--wp--preset--font-family--heading)"
+                }
+            },
+            "nav": {
+                "typography": { "fontSize": "var(--fz-h4)" }
+            }
+        }
+    }
+}

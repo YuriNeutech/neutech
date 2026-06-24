@@ -1,0 +1,11 @@
+.progress {
+    background-color: $c-light;
+    height: 0.8rem;
+
+    &__bar {
+        background-color: $c-action;
+        transform-origin: left; // Critical: Makes it grow from left to right
+        transform: scaleX(0);   // Start hidden
+    }
+}
+// End inner

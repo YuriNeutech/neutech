@@ -1,0 +1,17 @@
+{
+    "name": "acf/link-with-arrow",
+    "title": "Link with arrow",
+    "category": "neutech",
+    "keywords": ["link", "post"],
+    "icon": "paperclip",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

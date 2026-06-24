@@ -1,0 +1,17 @@
+{
+    "name": "acf/benefits-slider-section",
+    "title": "Benefits Slider Section",
+    "category": "neutech",
+    "keywords": ["benefits", "advantages", "slider"],
+    "icon": "slides",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

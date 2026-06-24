@@ -1,0 +1,151 @@
+.header-nav {
+    height: 4.8rem;
+    text-transform: lowercase;
+    color: inherit;
+    font-family: var(--wp--preset--font-family--heading);
+    
+    @include media($bp-desktop) {
+        height: auto;
+    }
+    
+    &__button, &__close {
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+        background-color: transparent;
+        border: none;
+        @include square(4.8rem);
+
+        svg {
+            stroke: var(--header-elements-color);
+        }
+
+        @include media($bp-desktop) {
+            display: none;
+            pointer-events: none;
+        }
+    }
+
+    &__menu-wr {
+        position: fixed;
+        inset-block-end: 0;
+        @include push--center;
+        justify-content: center;
+        align-items: center;
+        padding: 3.2rem;
+        gap: 4.8rem;
+        text-align: center;
+        height: calc(100dvh - var(--header-height));
+        z-index: 5;
+        display: none;
+        @include el-hide;
+        width: 100vw;
+
+        @include media($bp-desktop) {
+            position: relative;
+            display: flex;
+            @include el-show;
+            height: auto;
+            padding: 0;
+            width: auto;
+            transform: none;
+            left: 0;
+        }
+    }
+
+    &__list {
+        font-weight: 500;
+        gap: 4rem;
+
+        .sub-menu {
+            display: none;
+            
+            @include media($bp-desktop) {
+                position: absolute;
+                inset-block-start: calc(100% + 9.6rem);
+                display: block;
+                width: max-content;
+                height: auto;
+                font-size: var(--fz-h3);
+                display: flex;
+                flex-direction: column;
+                gap: 4.8rem;
+                text-transform: none;
+                text-align: start;
+                @include el-hide;
+            }
+        }
+
+        .menu-item {
+
+            &.current-menu-item {
+                color: $c-action;
+            }
+           
+            & > a {
+                transition: color .3s ease-in-out;
+
+                @include hover {
+                    color: $c-action;
+                }
+            }
+        }
+
+        @include media($bp-desktop) {
+            flex-direction: row;
+            gap: 4.8rem;
+        }
+
+        @include media($bp-wide) {
+            gap: 9.6rem;
+            font-size: 2rem;
+        }
+    }
+
+    &__cta-btn {
+        @include media($bp-desktop) {
+            display: none;
+        }
+    }
+
+    // bg
+
+    &__bg {
+        pointer-events: none;
+        background-color: var(--header-bg);
+
+        @include media($bp-desktop) {
+            position: fixed;
+            inset-block-start: 5.96vw;
+            @include el-hide;
+        }
+
+        @include media($bp-desktop) {
+           inset-block-start: 8.4rem;
+        }
+    }
+
+    &__blur-bg {
+        width: 100%;
+        height: 20vh;
+        background: $c-action;
+        top: 50%;
+        @include push--center;
+        border-radius: 50%;
+        filter: blur(8rem);
+        opacity: .4;
+        
+        @include media($bp-desktop) {
+            height: 20vh;
+            top: -20%;
+            filter: blur(15rem);
+        }
+    }
+    // End Bg
+
+    &__particle {
+        @include square(2.4rem);
+        filter: blur(10px);
+    }
+}
+// End inner

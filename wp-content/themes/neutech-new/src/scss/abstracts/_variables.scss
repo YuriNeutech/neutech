@@ -1,0 +1,58 @@
+// Breakpoints
+$bp-mobile: 576px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-wide: 1280px;
+$bp-full-hd: 1920px;
+
+// Breakpoints
+@mixin media($width) {
+    @media screen and (min-width: $width) {
+        @content;
+    }
+}
+// End Breakpoints
+
+// Colors
+$c-action: var(--wp--preset--color--action);
+$c-black: var(--wp--preset--color--black);
+$c-gray: var(--wp--preset--color--gray);
+$c-light: var(--wp--preset--color--light);
+$c-white: var(--wp--preset--color--white);
+
+:root {
+    // H's
+    --fz-h1: clamp(1.8rem, 7.5vw, 9.6rem);
+    @include media($bp-desktop) {--fz-h1: 5vw;}
+    @include media($bp-full-hd) {--fz-h1: 9.6rem;}
+    --fz-h2: clamp(1.6rem, 6.2vw, 6rem);
+    @include media($bp-desktop) {--fz-h2: 3.125vw;}
+    @include media($bp-full-hd) {--fz-h2: 6rem;}
+    --fz-h3: clamp(1.4rem, 4.2vw, 4rem);
+
+    --fz-h4: clamp(1.4rem, 4.2vw, 2.4rem);
+
+    --fz-nav: 1.4rem;
+    @include media($bp-tablet) {--fz-nav: 1.6rem;}
+    @include media($bp-wide) {--fz-nav: 1.8rem;}
+
+    --fz-btn: 1.6rem;
+    @include media($bp-mobile) {--fz-btn: 1.8rem;}
+    @include media($bp-tablet) {--fz-btn: 2rem;}
+    @include media($bp-desktop) {--fz-btn: max(1.6rem,1.46vw);}
+    @include media($bp-full-hd) {--fz-btn: 2.8rem;}
+
+    --fz-label: 1.2rem;
+    @include media($bp-mobile) {--fz-label: 1.4rem;}
+
+    --fz-p: 1.8rem;
+
+    --fz-title: clamp(1.6rem, 4vw, 2rem);
+    @include media($bp-full-hd) {--fz-title: 2rem;}
+
+    --header-height: 8rem;
+    @include media($bp-mobile) {--header-height: 8.4rem;}
+    @include media($bp-tablet) {--header-height: 8.8rem;}
+    @include media($bp-desktop) {--header-height: 8.6vw;}
+    @include media($bp-full-hd) {--header-height: 16rem;}
+}

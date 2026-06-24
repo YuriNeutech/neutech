@@ -1,0 +1,28 @@
+.breadcrumbs {
+    color: #666;
+
+    &__list {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+
+    &__list {
+        gap: .4rem;
+    }
+
+    &__current {
+        color: $c-black;
+    }
+
+    &__link {
+        @include media($bp-desktop) {
+            transition: color .3s ease-in-out;
+
+            @include hover {
+                color: $c-action;
+            }
+        }
+    }
+}
+// End inner

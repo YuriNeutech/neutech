@@ -1,0 +1,17 @@
+{
+    "name": "acf/video-section",
+    "title": "Full screen video section",
+    "category": "neutech",
+    "keywords": ["video", "vimeo"],
+    "icon": "format-video",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

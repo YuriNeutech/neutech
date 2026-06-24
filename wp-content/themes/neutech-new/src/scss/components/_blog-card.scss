@@ -1,0 +1,150 @@
+.blog-card {
+    &__preview-img {
+        border-radius: 2.28em;
+
+        &::after {
+            @include pseudo(block, relative);
+            width: 100%;
+            padding-block-start: 70.6%;
+        }
+
+        @include media($bp-desktop) {
+            border-radius: 2.66em;
+        }
+
+        img {
+            transition: transform .4s ease-in-out;
+        }
+    }
+
+    &__hidden-url {
+        opacity: 0;
+        z-index: z('beelow');
+    }
+
+    &__title h3 {
+        text-transform: none;
+    }
+    
+    &__footer, &__title {
+        margin-block-start: .8rem;
+
+        @include media($bp-desktop) {
+            margin-block-start: 1.6rem;
+        }
+    }
+    
+    &__excerpt {
+        margin-block-start: 2rem;
+    }
+
+    &__features {
+        gap: .8rem;
+
+        @include media($bp-desktop) {
+            gap: 2.4rem;
+        }
+    }
+
+    &__title {
+        @include media($bp-desktop) {
+            transition: color .3s ease-in-out;
+            z-index: z('content');
+            position: relative;
+
+            @include hover {
+                color: $c-action;
+            }
+        }
+    }
+
+    &__btn-link {
+        z-index: z('content');
+    }
+
+    @include media($bp-desktop) {
+        @include hover {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+// End inner
+
+.blog-card--type {
+    &_lg {
+        color: $c-white;
+        min-height: 60dvh;
+        display: flex;
+
+        @include media($bp-desktop) {
+            min-height: 60rem;
+        }
+
+        .blog-card {
+            &__preview-img {
+                position: absolute;
+                inset: 0;
+                height: 100%;
+
+                &::before {
+                    @include pseudo;
+                    @include square(100%);
+                    position: absolute;
+                    background: linear-gradient(181deg, rgba(0, 0, 0, 0.00) 1.84%, rgba(0, 0, 0, 0.70) 46.42%);
+                    z-index: 1;
+                    inset: 0;
+
+                    @include media($bp-desktop) {
+                        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 46.09%, rgba(0, 0, 0, 0.70) 72.53%)
+                    }
+                }
+            }
+
+            &__content {
+                position: relative;
+                z-index: 1;
+                padding: 2.4rem;
+                margin-block-start: auto;
+
+                @include media($bp-desktop) {
+                    padding: 3.2rem;
+                }
+            }
+
+            &__footer, &__title {
+                margin-block-start: 3.2rem;
+            }
+
+            &__features {
+                gap: 2.4rem;
+            }
+            
+        }
+        // End inner
+    }
+    // End lg
+
+    &_sm {
+        .blog-card {
+            &__footer {
+                color: $c-gray;
+            }
+
+
+            &__content {
+                margin-block-start: 2.4rem;
+                padding-block-end: 2.4rem;
+
+                @include media($bp-desktop) {
+                    margin-block-start: 1.6rem;
+                    padding-block-end: 0;
+                }
+            }
+        }
+        // End inner
+    }
+    // End sm
+}
+// End by TYPE

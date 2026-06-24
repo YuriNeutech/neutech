@@ -1,0 +1,27 @@
+.preloader {
+    // position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: z('preloader');
+    // background: $c-black;
+
+    &__logo-wr {
+        width: 42vw;
+        
+        svg {
+            width: 100%;
+            height: auto;
+            overflow: visible;
+
+            .logo-text, .logo-dot {
+                visibility: hidden; 
+                opacity: 0;
+            }
+        }
+    }
+}

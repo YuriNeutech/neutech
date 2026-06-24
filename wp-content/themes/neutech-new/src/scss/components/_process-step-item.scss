@@ -1,0 +1,63 @@
+.process-step-item {
+    padding-block: 1.2rem 2.4rem;
+    transition: .3s ease-in-out;
+    cursor: none;
+
+    @include media($bp-desktop) {
+        @media (hover: hover) {
+            &:hover {
+                padding-block: 2.4rem 3.6rem;
+
+                .process-step-item__title {
+                    color: $c-action;
+                }
+            }
+        }
+    }
+
+    @include media($bp-wide) {
+        padding-block: 4.8rem 7.2rem;
+
+        @media (hover: hover) {
+            &:hover {
+                padding-block: 6.4rem 10rem;
+            }
+        }
+    }
+
+    &__counter {
+        color: $c-gray;
+    }
+
+    &__title {
+        margin-block-start: 2.4rem;
+
+        @include media($bp-wide) {
+            margin-block-start: 0;
+        }
+    }
+
+    &__desc {
+        margin-block-start: 1.2rem;
+
+        @include media($bp-wide) {
+            margin-block-start: 0;
+            max-width: 51.2rem;
+        }
+    }
+
+    &__link {
+        opacity: 0;
+        @include push-full;
+    }
+
+    @include media($bp-wide) {
+        &__content-wr {
+            display: flex;
+            margin-block-start: 6.4rem;
+            justify-content: space-between;
+            gap: 6.4rem;
+        }
+    }
+}
+// End inner

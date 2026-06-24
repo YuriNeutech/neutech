@@ -1,0 +1,95 @@
+.category-select {
+    border-radius: 1.7em;
+    border: .2rem solid var(--wp--preset--color--black);
+
+    @include media($bp-desktop) {
+        border-color: transparent;
+    }
+
+    &__title {
+        gap: .4rem;
+
+        svg {
+            @include square(3.2rem);
+        }
+    }
+
+    &__arrow {
+        @include square(4.8rem);
+    }
+
+    &__heading {
+        padding-inline-start: .4rem;
+
+        @include media($bp-desktop) {
+            display: none;
+        }
+    }
+
+    &__dropdown {
+        padding-inline: 1.6rem;
+
+
+
+        @include media($bp-desktop) {
+            padding: 0;
+        }
+    }
+
+    &__categories-list {
+        overflow-y: auto;
+        max-height: 29rem;
+        transition: all .3s ease-in-out;
+
+        &::-webkit-scrollbar {
+            width: 0.2rem;
+            background-color: #F5F5F7;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #BBB;
+        }
+
+        @include media($bp-desktop) {
+            max-height: 100%;
+            overflow: visible;
+        }
+    }
+
+    &__option {
+        padding-block: .6em;
+        transition: color .3s ease-in-out;
+        
+        &.active {
+            color: $c-action;
+        }
+
+        @include media($bp-desktop) {
+            min-height: 5rem;
+        }
+        
+        @include media($bp-desktop) {
+            @include hover {
+                color: $c-action;
+            }
+        }
+    }
+
+    &:not(.is-open) {
+        .category-select {
+            &__categories-list {
+                max-height: 0;
+                opacity: 0;
+                visibility: hidden;
+
+                @include media($bp-desktop) {
+                    opacity: 1;
+                    visibility: visible;
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+    // End OPEN STATE
+}
+// End inner

@@ -1,0 +1,23 @@
+{
+    "name": "acf/hero-section",
+    "title": "Hero Section",
+    "description": "A custom hero section with title.",
+    "category": "neutech",
+    "icon": "cover-image",
+    "keywords": ["hero"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "_is_inserter_preview": true
+            }
+        }
+    }
+}

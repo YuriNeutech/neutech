@@ -1,0 +1,16 @@
+{
+    "name": "a1406/neutech-new",
+    "require": {
+        "stoutlogic/acf-builder": "^1.12"
+    },
+    "authors": [
+        {
+            "name": "neutech"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CleanTheme\\": "inc/"
+        }
+    }
+}

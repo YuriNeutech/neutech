@@ -1,0 +1,65 @@
+body {
+  font-family: var(--wp--preset--font-family--body);
+}
+
+h1, h2, h3, h4, .btn {
+  font-family: var(--wp--preset--font-family--heading);
+  text-transform: lowercase;
+  font-weight: 500;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+}
+
+// Font sizes and font families
+.fz-h1 {
+  font-size: var(--fz-h1);
+}
+
+.fz-h2 {
+  font-size: var(--fz-h2);
+}
+
+.fz-h3 {
+  font-size: var(--fz-h3);
+}
+
+.fz-h4 {
+  font-size: var(--fz-h4);
+}
+
+.fz-nav {
+  font-size: var(--fz-nav);
+  font-family: var(--wp--preset--font-family--heading);
+}
+
+.fz-p {
+    font-size: var(--fz-p);
+    line-height: 1.33;
+}
+
+.fz-title {
+    font-size: var(--fz-title);
+    line-height: 1.4;
+    font-weight: 500;
+    font-family: var(--wp--preset--font-family--heading);
+}
+
+.fz-label {
+    font-size: var(--fz-label);
+    line-height: 1.14;
+}
+
+.bg-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: #EF3F50;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.8;
+  will-change: transform, opacity;
+}

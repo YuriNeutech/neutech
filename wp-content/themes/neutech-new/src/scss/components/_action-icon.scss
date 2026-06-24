@@ -1,0 +1,116 @@
+.action-icon {
+    @include square(8rem);
+    border-radius: 50%;
+    border: 1.5px solid rgba(239, 63, 80, 0.40);
+    // opacity: 0;
+
+    @include media($bp-desktop) {
+        @include square(7.5vw);
+    }
+    
+    @include media($bp-full-hd) {
+        @include square(14.4rem);
+    }
+
+    &__arrow {
+        width: 0.7rem;
+        height: 1.4rem;
+
+        @include media($bp-desktop) {
+            width: .9rem;
+            height: 1.6rem;
+        }
+
+        svg {
+            @include contain-image;
+        }
+    }
+    
+    &__text {
+        width: 18rem;
+        top: 2.7rem;
+        right: -16rem;
+        font-size: var(--fz-nav);
+        color: $c-action;
+        line-height: 1.4;
+
+        @include media($bp-tablet) {
+            right: -18rem;
+            width: 20rem;
+        }
+
+        @include media($bp-desktop) {
+            top: calc(7.5vw/2 - var(--fz-nav)/2*1.4);
+            width: 19ch;
+            right: calc(-19ch + 1.56vw);
+        }
+
+        @include media($bp-full-hd) {
+            top: 5.5rem;
+            right: -19.5rem;
+            width: 23rem;
+        }
+    }
+
+    &--type-arrows {
+        .action-icon {
+            &__arrows {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: .4rem;
+
+                @include media($bp-desktop) {
+                    gap: 1.15vw;
+                }
+
+                @include media($bp-full-hd) {
+                    gap: 2.2rem;
+                }
+            }
+        }
+        // End inner
+    }
+
+    &--dir-right, &--dir-left {
+        .action-icon {
+            &__arrow {
+                &:last-child {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        // End inner
+    }
+
+    &--dir-up, &--dir-down {
+        .action-icon {
+            &__arrows {
+                flex-direction: column;
+            }
+
+            &__arrow {
+                &:first-child {
+                    transform: rotate(90deg);
+                }
+
+                &:last-child {
+                    transform: rotate(-90deg);
+                }
+            }
+        }
+        // End inner
+    }
+
+    &--type-circle {
+        &::after {
+            @include pseudo;
+            @include square(1rem);
+            @include push--center-middle;
+            border-radius: 50%;
+            background: $c-action;
+        }
+    }
+}

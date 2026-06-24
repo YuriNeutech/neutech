@@ -1,0 +1,32 @@
+.process-steps {
+    background: $c-white;
+    color: $c-black;
+    padding-block: 2.4rem;
+    cursor: none;
+
+    @include media($bp-tablet) {
+        padding-block: 3.6rem;
+    }
+
+    @include media($bp-desktop) {
+        padding-block: 3.6rem 6.4rem;
+    }
+
+    @include media($bp-wide) {
+        padding-block: 3.6rem 10rem;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            border-bottom: .1rem solid $c-light;
+        }
+    }
+    // End item
+
+    &__scroll-icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+// End inner

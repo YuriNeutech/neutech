@@ -1,0 +1,218 @@
+.post-page {
+    padding-block: calc(var(--header-height) + 3.2rem) 2rem;
+    text-transform: none;
+
+    @include media($bp-desktop) {
+        padding-block: calc(var(--header-height) + 4rem) 32rem;
+    }
+
+    &__breadcrumbs {
+        margin-block-end: 1.6rem;
+
+        @include media($bp-desktop) {
+            margin-block-end: 3.2rem;
+        }
+    }
+
+    &__header {
+        gap: 1.6rem;
+
+        @include media($bp-desktop) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include media($bp-wide) {
+            gap: 13.6rem;
+            grid-template-columns: 42.7% auto;
+        }
+
+        &--single {
+           @include media($bp-desktop) {
+                grid-template-columns: auto;
+            } 
+        }
+    }
+
+    &__thumbnail {
+        border-radius: 1.5em;
+
+        @include media($bp-desktop) {
+            border-radius: 0;
+        }
+    }
+
+    &__intro {
+        @include media($bp-desktop) {
+            order: -1;
+        }
+    }
+
+    &__title {
+        text-transform: none;
+    }
+
+    &__cat {
+        margin-block-end: 2.8rem;
+
+        @include media($bp-wide) {
+            margin-block-end: 4rem;
+        }
+    }
+
+    &__excerpt {
+        margin-block-start: 2rem;
+        @include media($bp-wide) {
+            margin-block-start: 2.8rem;
+        }
+    }
+
+    &__meta {
+        margin-block-start: 2.8rem;
+
+        @include media($bp-wide) {
+            margin-block-start: 4rem;
+        }
+    }
+
+    &__details {
+        color: #666;
+        gap: .8rem 1.6rem;
+
+        @include media($bp-wide) {
+            gap: .8rem 2.4rem;
+        }
+    }
+
+    &__share-list {
+        gap: .4rem;
+
+        @include media($bp-wide) {
+            gap: 1.6rem;
+        }
+    }
+
+    &__share-link {
+        @include square(3.2rem);
+
+        svg {
+            fill: #050708;
+        }
+
+        @include media($bp-desktop) {
+            svg {
+                transition: fill .3s ease-in-out;
+            }
+
+            @include hover {
+                svg {
+                    fill: $c-action;
+                }
+            }
+        }
+    }
+
+    &__share-label {
+        margin-inline-end: .4rem;
+    }
+
+    &__content-wrapper {
+        gap: 4rem;
+        padding-block-start: 5rem;
+
+        @include media($bp-wide) {
+            padding-block-start: 4.8rem;
+            gap: 13.6rem;
+            grid-template-columns: auto 37.7rem;
+            position: relative;
+        }
+    }
+
+    &__sidebar {
+        position: sticky;
+        top: var(--header-height);
+        height: max-content;
+    }
+
+    &__main-content {
+        h1, h2, h3, h4, h5, h6 {
+            text-transform: none;
+            margin-block: 0 1em;
+        }
+
+        p {
+            margin-block: 1em;
+        }
+
+        h1 {
+            font-size: var(--fz-h1);
+        }
+
+        h2 {
+            font-size: var(--fz-h2);
+        }
+
+        h3 {
+            font-size: var(--fz-h3);
+        }
+
+        h4 {
+            font-size: var(--fz-h4);
+        }
+
+        h5 {
+            font-size: var(--fz-title);
+        }
+
+        h6 {
+            font-size: var(--fz-nav);
+        }
+
+        ol, ol > li {
+            list-style-type: decimal;
+        }
+
+        ul, ul > li {
+            list-style-type: disc;
+        }
+
+        ul, ol {
+            margin-block: 1em;
+            padding-inline-start: 2em;
+        }
+
+        a:not(.arrow-link) {
+            color: $c-action;
+            text-decoration: underline;
+            transition: all .3s ease-in-out;
+
+            @include media($bp-desktop) {
+                @include hover {
+                    opacity: .5;
+                }
+            }
+        }
+
+        ul > li, ol >li {
+            &:not(:last-child) {
+                margin-block-end: .5em;
+            }
+        }
+
+        .wp-block-image {
+            margin-block: 1.5em;
+        }
+
+        iframe {
+            height: 50rem;
+
+            @include media($bp-tablet) {
+                height: 40rem;
+            }
+
+            @include media($bp-desktop) {
+                height: 30rem;
+            }
+        }
+    }
+}
+// End inner

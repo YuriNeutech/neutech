@@ -1,0 +1,28 @@
+.arrow-link {
+    color: $c-action;
+    gap: .4rem;
+    font-weight: 500;
+    margin-block: 1.5em;
+    text-decoration: none;
+
+    &__icon-wr {
+        flex-shrink: 0;
+        @include square(1.8rem);
+
+        svg {
+            stroke: $c-action;
+        }
+    }
+
+    @include media($bp-desktop) {
+        svg {
+            transition: transform .3s ease-in-out;
+        }
+        @include hover {
+            svg {
+                transform: translate(10%, -10%);
+            }
+        }
+    }
+}
+// End inner

@@ -1,0 +1,77 @@
+.benefits {
+    padding-block: 2rem 8rem;
+    width: 100%;
+    overflow: hidden;
+
+    @include media($bp-tablet) {
+        padding-block: 6rem;
+    }
+
+    @include media($bp-desktop) {
+        padding-block: 7.29vw;
+    }
+
+    @include media($bp-full-hd) {
+        padding-block: 14rem;
+    }
+
+    &__particles {
+        inset: 0;
+        pointer-events: none;
+    }
+
+    &__slider {
+        margin-inline-start: 5vw;
+        width: 90vw;
+
+        &-viewport {
+            overflow: visible;
+        }
+
+        &-container {
+            display: flex;
+            gap: 1rem;
+            touch-action: pan-y pinch-zoom;
+
+            @include media($bp-mobile) {
+                gap: 2rem;
+            }
+
+            @include media($bp-desktop) {
+                gap: 1.25vw;
+            }
+
+            @include media($bp-full-hd) {
+                gap: 2.4rem;
+            }
+        }
+    }
+    // End slider
+
+    &__slide {
+        flex: 0 0 unquote("min(95%, 140rem)");
+        min-width: 0;
+    }
+
+    &__scroll-icon {
+        position: absolute;
+        bottom: 2rem;
+        right: 15rem;
+        pointer-events: none;
+
+        @include media($bp-tablet) {
+            right: 27rem;
+        }
+
+        @include media($bp-desktop) {
+            bottom: 19.01vw;
+            right: 21.875vw;
+        }
+
+        @include media($bp-full-hd) {
+            bottom: 33%;
+            right: 42rem;
+        }
+    }
+}
+// End inner

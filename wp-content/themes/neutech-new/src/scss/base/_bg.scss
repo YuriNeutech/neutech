@@ -1,0 +1,10 @@
+.bg {
+    &--white {
+        background-color: $c-white;
+        color: $c-black;
+    }
+
+    &--action {
+        background-color: $c-action;
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "name": "acf/process-steps-section",
+    "title": "Process Steps Section",
+    "category": "neutech",
+    "keywords": ["service", "step", "numbered", "what we do"],
+    "icon": "editor-ul",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

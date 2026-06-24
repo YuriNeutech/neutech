@@ -1,0 +1,172 @@
+.footer {
+    color: $c-white;
+    text-align: center;
+    padding-block: 6rem 1.2rem;
+
+    @include media($bp-tablet) {
+        padding-block: 10rem 1.2rem;
+    }
+
+    @include media($bp-desktop) {
+        padding-block: 14.4rem 1.2rem;
+    }
+
+    // BG
+    &__bg-effects {
+        inset: 0;
+        pointer-events: none;
+    }
+
+    &__blur-bg {
+        width: 100%;
+        height: 30%;
+        background: $c-action;
+        top: 45%;
+        @include push--center;
+        border-radius: 50%;
+        filter: blur(8rem);
+        opacity: .1;
+        
+        @include media($bp-desktop) {
+            width: 80%;
+            top: 45%;
+            filter: blur(15rem);
+        }
+    }
+    // End Bg
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 2.4rem;
+
+        @include media($bp-tablet) {
+            gap: 4.8rem;
+        }
+
+        @include media($bp-desktop) {
+            gap: 6.4rem
+        }
+    }
+
+    &__block {
+        &--title {
+            font-size: clamp(1rem, 6.8vw, 3rem);
+            line-height: 1.8;
+
+            @include media($bp-mobile) {
+                line-height: 1.5;
+            }
+
+            @include media ($bp-tablet) {
+                font-size: clamp(3rem, 5vw, 5rem);
+                line-height: 1.2;
+            }
+
+            @include media ($bp-desktop) {
+                font-size: clamp(5rem, 5.5vw, 10rem);
+            }
+
+            em {
+                font-style: normal;
+                white-space: nowrap;
+                position: relative;
+                border-radius: 2em;
+                padding: .1em .3em .2em;
+
+                --highlight-progress: 0%;
+
+                @include media ($bp-desktop) {
+                    padding: .01em .15em .05em;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: var(--highlight-progress);
+                    opacity: var(--highlight-opacity);
+                    
+                    background: radial-gradient(
+                        70% 80% at 50% 0%,
+                        rgba(239, 63, 80, 0.15) 0%,
+                        rgba(255, 255, 255, 0.02) 100%
+                    );
+                    box-shadow: inset 0 4px 15px rgba(239, 63, 80, 0.15),
+                                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                    
+                    backdrop-filter: blur(4px);
+                    -webkit-backdrop-filter: blur(4px);
+                    
+                    border-radius: 2em;
+                    z-index: -1;
+                    pointer-events: none;
+                }
+            }
+        }
+        // End TITLE type of block
+
+        &--contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+
+            @include media($bp-tablet) {
+                gap: 2.4rem
+            }
+
+            @include media($bp-desktop) {
+                gap: 3.2rem;
+            }
+        }
+
+        &--row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: .8rem;
+
+            @include media($bp-tablet) {
+                gap: 2.4rem;
+            }
+
+            @include media($bp-desktop) {
+                gap: 3.2rem;
+            }
+        }
+        // End CONTACT type of block
+
+        &--copiright {
+            opacity: .4;
+        }
+        // End COPYRIGHT
+    }
+
+    &__cta-btn {
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        width: min-content;
+    }
+
+    &__contact-item {
+        // white-space: nowrap;
+        color: $c-white;
+        text-decoration: none;
+    }
+
+    a.footer__contact-item {
+        transition: .3s ease-in-out;
+
+        @include hover {
+            color: $c-action;
+        }
+    }
+}
+// End inner

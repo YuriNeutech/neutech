@@ -1,0 +1,72 @@
+.blog-newsletter {
+    color: $c-white;
+    text-align: center;
+    border-radius: 2.3em;
+    text-transform: none;
+    padding: 3.2rem;
+
+    @include media($bp-desktop) {
+        padding: 6.4rem;
+    }
+
+    &__title {
+        text-transform: none;
+    }
+
+    &__text, &__form {
+        margin-block-start: 2.8rem;
+
+        @include media($bp-desktop) {
+            margin-block-start: 4rem;
+        }
+    }
+
+    &__field {
+        outline: none;
+        border-radius: 2.3em;
+        padding: 1rem 1.6rem;
+        background-color: transparent;
+        border: .2rem solid $c-white;
+        color: $c-white;
+
+        @include placeholder {
+            color: rgba(255, 255, 255, .4);
+        }
+
+        @include media($bp-desktop) {
+            padding: 1.4rem 2.4rem;
+        }
+    }
+
+    &__btn {
+        justify-content: center;
+        margin-block-start: .4rem;
+
+        @include media($bp-desktop) {
+            margin: 0;
+            width: max-content;
+            flex-shrink: 0;
+        }
+    }
+
+    &__form {
+        
+        @include media($bp-desktop) {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+    }
+
+    &__inner {
+        @include media($bp-wide) {
+            margin-inline: auto;
+            width: 65rem;
+        }
+    }
+
+    &__success {
+        display: none;
+    }
+}
+// End inner
