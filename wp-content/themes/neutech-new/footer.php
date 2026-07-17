@@ -98,6 +98,15 @@
                         <a href="<?= esc_url(home_url('/get-a-quote/')); ?>">Get a Quote</a>
                     </div>
                     <div class="footer-nav__col">
+                        <span class="footer-nav__head">Why Neutech</span>
+                        <a href="<?= esc_url(home_url('/residency-program/')); ?>">Residency Program</a>
+                        <a href="<?= esc_url(home_url('/senior-level-redefined/')); ?>">Senior Level Redefined</a>
+                        <a href="<?= esc_url(home_url('/where-we-specialize/')); ?>">Where We Specialize</a>
+                        <a href="<?= esc_url(home_url('/the-neutech-wave/')); ?>">The Neutech Wave</a>
+                        <a href="<?= esc_url(home_url('/month-to-month-flexibility/')); ?>">Month-to-Month Flexibility</a>
+                        <a href="<?= esc_url(home_url('/the-neutech-office/')); ?>">The Neutech Office</a>
+                    </div>
+                    <div class="footer-nav__col">
                         <span class="footer-nav__head">Resources</span>
                         <a href="<?= esc_url(home_url('/blog/')); ?>">Blog</a>
                         <a href="<?= esc_url(home_url('/resources/')); ?>">Guides &amp; Tools</a>
