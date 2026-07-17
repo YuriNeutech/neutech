@@ -1,0 +1,200 @@
+.wheel {
+    padding-block: 6rem;
+
+    @include media($bp-desktop) {
+        padding-block: 11rem 9rem;
+    }
+
+    &__heading {
+        margin-block-end: 6rem;
+
+        @include media($bp-desktop) {
+            max-width: 105.6rem;
+        }
+    }
+
+    &__subtitle {
+        margin-block-start: 4rem;
+
+        // @include media($bp-desktop) {
+        //      margin-block-start: 6rem;
+        // }
+    }
+
+
+    &__mobile-icon {
+        @include media($bp-desktop) {
+            display: none;
+        }
+    }
+
+    &__desktop-icon {
+        @include media($bp-desktop) {
+            display: block;
+        }
+    }
+
+    &__card {
+        margin-block-start: 6rem;
+
+        @include media($bp-desktop) {
+            width: 50%;
+            max-width: 51.2rem;
+            position: absolute;
+            margin: 0;
+
+            &:first-child {
+                inset-block-start: 0;
+                inset-inline-start: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+            }
+
+            &:nth-child(2) {
+                inset-block-end: 10%;
+                inset-inline-end: -10%;
+            }
+
+            &:last-child {
+                inset-block-end: -10%;
+                inset-inline-start: 0;
+            }
+        }
+
+        @include media($bp-full-hd) {
+            
+
+            &:first-child {
+                inset-block-start: 4rem;
+                max-width: 62rem;
+            }
+
+            &:nth-child(2) {
+                inset-block-end: 0;
+                inset-inline-end: 0;
+            }
+
+            &:last-child {
+                inset-block-end: 7%;
+            }
+        }
+    }
+
+    &__blur-bg {
+        inset-block-start: 0;
+        height: 9.6rem;
+        width: 100rem;
+        border-radius: 50%;
+        filter: blur(150px);
+        @include push--center;
+
+        @include media($bp-desktop) {
+            filter: blur(250px);
+            width: 100%;
+            height: 20%;
+            bottom: 40%;
+            top: auto;
+        }
+    }
+
+    &__graphic {
+
+        svg {
+            width: 90%;
+            margin-inline: auto;
+            height: auto;
+        }
+
+        @include media($bp-desktop) {
+            max-width: 90rem;
+            margin-inline: auto;
+
+            svg {
+                width: 100%;
+            }
+        }
+    }
+
+    &__stage {
+        @include media($bp-desktop) {
+            padding-block-start: 24rem;
+        }
+    }
+
+    &__item-num {
+        &:first-child {
+            top: 5%;
+            right: 35%;
+
+            @include media($bp-desktop) {
+                top: 12%;
+                right: 55%;
+            }
+
+            @include media($bp-wide) {
+                top: 17%;
+                right: 59%;
+            }
+        }
+
+        &:nth-child(2) {
+            top: 65%;
+            inset-inline-end: 25%;
+
+            @include media($bp-desktop) {
+                inset-inline-end: 35%;
+            }
+
+            @include media($bp-wide) {
+                inset-inline-end: 30%;
+            }
+
+            @include media($bp-full-hd) {
+                inset-inline-end: 20%;
+                inset-block-start: 55%;
+            }
+        }
+
+        &:last-child {
+            left: 15%;
+            inset-block-start: 50%;
+
+            @include media($bp-desktop) {
+                inset-block-start: 45%
+            }
+
+            @include media($bp-full-hd) {
+                inset-block-start: 77%;
+            }
+        }
+
+        @include media($bp-desktop) {
+            span {
+                opacity: 0;
+                display: none;
+            }
+        }
+    }
+
+    &__item-square {
+        @include media($bp-desktop) {
+            @include square(6rem);
+            border-radius: 2.4rem;
+            background-color: transparent;
+            border: .2rem solid rgba(255, 255, 255, 0.70);
+
+            &::after {
+                @include pseudo;
+                @include square(.8rem);
+                @include push--center-middle;
+                border-radius: 50%;
+                background-color: $c-white;
+            }
+        }
+
+        @include media($bp-full-hd) {
+            @include square(8rem);
+        }
+    }
+}
+// End inner

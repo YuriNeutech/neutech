@@ -1,0 +1,14 @@
+.pb {
+    &--M {
+        padding-block: 6.4rem;
+
+        @include media($bp-tablet) {
+            padding-block: 9.6rem;
+        }
+
+        @include media($bp-desktop) {
+            padding-block: 14.4rem;
+        }
+    }
+}
+// End inner

@@ -1,0 +1,19 @@
+.flywheel-card {
+    &__heading {
+        gap: 2.4rem;
+        margin-block-end: 3rem;
+    }
+
+    &__subtitle {
+        margin-block-start: 1rem;
+    }
+
+    &__descr {
+        margin-block-start: 3rem;
+
+        @include media($bp-desktop) {
+            padding-inline-start: 6rem;
+        }
+    }
+}
+// End inner

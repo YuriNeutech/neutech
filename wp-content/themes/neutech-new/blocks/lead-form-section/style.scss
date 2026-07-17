@@ -1,0 +1,33 @@
+// ── Quote / contact form ─────────────────────────────────────
+.lp-form {
+    &__grid {
+        position: relative; z-index: 1;
+        display: grid; gap: 4rem;
+        @include media($bp-desktop) { grid-template-columns: 0.9fr 1.1fr; gap: 6rem; align-items: start; }
+    }
+    &__intro .lp-title { color: $c-white; }
+    &__intro .lp-intro { color: #C9C9CE; }
+
+    &__form { display: grid; gap: 1.8rem; }
+    &__row { display: grid; gap: 1.8rem; @include media($bp-tablet) { grid-template-columns: 1fr 1fr; } }
+
+    &__field {
+        display: flex; flex-direction: column; gap: .8rem;
+        span { font-size: 1.4rem; color: #B9B9C0; letter-spacing: .02em; }
+        input, select, textarea {
+            font-family: inherit; font-size: 1.7rem; color: $c-white;
+            background: rgba(255,255,255,.04);
+            border: .1rem solid rgba(255,255,255,.16);
+            border-radius: 1rem; padding: 1.4rem 1.6rem; width: 100%;
+            transition: border-color .25s ease, background .25s ease;
+            &:focus { outline: none; border-color: $c-action; background: rgba(255,255,255,.07); }
+        }
+        select { appearance: none; cursor: pointer; }
+        textarea { resize: vertical; min-height: 10rem; }
+    }
+
+    &__actions { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; margin-top: .6rem; }
+    &__note { font-size: 1.3rem; color: #8A8A90; max-width: 32rem; }
+    &__status { font-size: 1.5rem; margin: 0; min-height: 1.5rem;
+        &.is-ok { color: #6FBE84; } &.is-err { color: $c-action; } }
+}

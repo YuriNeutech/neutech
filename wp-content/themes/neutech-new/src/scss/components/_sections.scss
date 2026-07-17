@@ -1,0 +1,284 @@
+// ─────────────────────────────────────────────────────────────
+// Shared landing-page primitives.
+//
+// Block-specific styles now live with each block in
+// blocks/<name>/style.scss (cards, stats, cta, faq, lead-form,
+// rich-text, insights). What remains here is the shared section
+// scaffolding (.lp-section / .lp-head / .lp-eyebrow / .lp-title /
+// .lp-intro) used by BOTH the ACF blocks and the legacy PHP
+// partials, plus .lp-hero (still used by content-map pages via
+// template-parts/sections/hero.php) and the single-post / footer
+// helpers.
+// ─────────────────────────────────────────────────────────────
+
+// Shared section rhythm
+.lp {
+    &-section {
+        position: relative;
+        padding-block: 8rem;
+
+        @include media($bp-tablet) { padding-block: 10rem; }
+        @include media($bp-desktop) { padding-block: 8.5vw; }
+        @include media($bp-full-hd) { padding-block: 16rem; }
+    }
+
+    &-section--light { background: $c-light; color: $c-black; }
+    &-section--white { background: $c-white; color: $c-black; }
+    &-section--dark  { background: $c-black; color: $c-white; }
+
+    // Section head (eyebrow + title + intro)
+    &-head {
+        max-width: 78rem;
+        margin-bottom: 5rem;
+
+        @include media($bp-desktop) { margin-bottom: 6rem; }
+
+        &--center { margin-inline: auto; text-align: center; }
+    }
+
+    &-eyebrow {
+        display: inline-block;
+        font-size: var(--fz-label);
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: $c-action;
+        margin-bottom: 2rem;
+    }
+
+    &-title {
+        font-family: var(--wp--preset--font-family--heading);
+        font-size: var(--fz-h2);
+        line-height: 1.02;
+        letter-spacing: -.02em;
+        text-wrap: balance;
+    }
+
+    &-intro {
+        margin-top: 2.4rem;
+        font-size: var(--fz-p);
+        line-height: 1.55;
+        color: $c-gray;
+        max-width: 62rem;
+
+        .lp-section--light &, .lp-section--white & { color: #555; }
+    }
+
+    &-head--center .lp-intro { margin-inline: auto; }
+}
+
+// ── Legacy landing hero (content-map pages via sections/hero.php) ──
+// The migrated flagship pages use the acf/hero-section block instead;
+// this remains for the ~22 pages still driven by inc/landing-content.php.
+.lp-hero {
+    display: flex;
+    align-items: center;
+    min-height: 82vh;
+    background: $c-black;
+    color: $c-white;
+    overflow: hidden;
+
+    &__bg { inset: 0; pointer-events: none; }
+
+    &__glow {
+        width: 60%;
+        height: 22vh;
+        background: $c-action;
+        top: -8%;
+        @include push--center;
+        border-radius: 50%;
+        filter: blur(9rem);
+        opacity: .45;
+    }
+
+    &__container {
+        padding-block: 14vh 10vh;
+        position: relative;
+        z-index: 1;
+
+        @include media($bp-desktop) {
+            display: grid;
+            grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+            align-items: center;
+            gap: 4rem;
+        }
+    }
+
+    &__inner { max-width: 72rem; }
+
+    // ── Right-side branded "stacked plates" motif ──
+    &__visual {
+        display: none;
+        position: relative;
+        justify-self: center;
+        width: 100%;
+        max-width: 46rem;
+
+        @include media($bp-desktop) { display: block; }
+    }
+
+    // Shared canvas for every hero motif.
+    &__viz {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        filter: drop-shadow(0 0 4rem rgba($c-action-solid, .35));
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+            * { animation: none !important; }
+        }
+    }
+
+    // Shared line + fill language (red wireframe, like the homepage hero).
+    &__plate,
+    &__face,
+    &__tile,
+    &__frame-outline {
+        stroke: $c-action;
+        stroke-width: 1.6;
+        stroke-linejoin: round;
+        fill: rgba($c-action-solid, .015);
+    }
+
+    &__edge {
+        stroke: $c-action;
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        opacity: .3;
+    }
+
+    // ── Variant: STACK (services) — layered lifecycle plates ──
+    &__viz--stack { animation: heroStackFloat 7s ease-in-out infinite; }
+
+    &__plate {
+        &--1 { fill: rgba($c-action-solid, .10); }
+        &--2 { opacity: .78; }
+        &--3 { opacity: .5; }
+        &--4 { opacity: .3; }
+    }
+
+    // ── Variant: CUBE (industries) — nested cube, depth ──
+    &__viz--cube { animation: heroCubeFloat 8s ease-in-out infinite; }
+
+    &__face--top  { fill: rgba($c-action-solid, .10); }
+    &__face--side { opacity: .55; }
+    &__face--core { fill: rgba($c-action-solid, .18); }
+
+    &__cube-inner {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: heroCubePulse 4.5s ease-in-out infinite;
+    }
+
+    // ── Variant: FRAME (work) — tiled modules lighting up in sequence ──
+    &__viz--frame { animation: heroStackFloat 9s ease-in-out infinite; }
+
+    &__frame-outline { fill: none; opacity: .5; }
+
+    &__tile {
+        fill: rgba($c-action-solid, .04);
+        animation: heroTilePulse 3.6s ease-in-out infinite;
+
+        &--1 { animation-delay: 0s; }
+        &--2 { animation-delay: .45s; }
+        &--3 { animation-delay: .9s; }
+        &--4 { animation-delay: 1.35s; }
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        font-size: var(--fz-label);
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: $c-action;
+        margin-bottom: 2.4rem;
+    }
+
+    &__title {
+        font-family: var(--wp--preset--font-family--heading);
+        font-size: var(--fz-h1);
+        line-height: 1;
+        letter-spacing: -.025em;
+        text-wrap: balance;
+    }
+
+    &__subtitle {
+        margin-top: 3rem;
+        font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+        line-height: 1.5;
+        color: #C9C9CE;
+        max-width: 64rem;
+    }
+
+    &__actions {
+        margin-top: 4.4rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.6rem 2rem;
+        align-items: center;
+    }
+}
+
+@keyframes heroStackFloat {
+    0%, 100% { transform: translateY(-1.2rem); }
+    50%      { transform: translateY(1.2rem); }
+}
+
+@keyframes heroCubeFloat {
+    0%, 100% { transform: translateY(-1rem) rotate(-1.2deg); }
+    50%      { transform: translateY(1rem) rotate(1.2deg); }
+}
+
+@keyframes heroCubePulse {
+    0%, 100% { transform: scale(1);    opacity: .85; }
+    50%      { transform: scale(1.14); opacity: 1; }
+}
+
+@keyframes heroTilePulse {
+    0%, 100% { fill: rgba($c-action-solid, .03); }
+    50%      { fill: rgba($c-action-solid, .20); }
+}
+
+// ── Post conversion card + end-of-article band (single-post) ─────
+.post-cta-card {
+    background: $c-black; color: $c-white;
+    border-radius: 1.8rem; padding: 3rem 2.8rem;
+    margin-bottom: 3.2rem; position: relative; overflow: hidden;
+
+    &__eyebrow { font-size: 1.2rem; letter-spacing: .16em; text-transform: uppercase; color: $c-action; }
+    &__title {
+        font-family: var(--wp--preset--font-family--heading);
+        font-size: 2.2rem; line-height: 1.15; letter-spacing: -.01em; margin: 1.4rem 0 1rem;
+    }
+    &__text { font-size: 1.5rem; line-height: 1.55; color: #C9C9CE; margin: 0 0 2.2rem; }
+    &__actions { display: flex; flex-direction: column; gap: 1.4rem; align-items: flex-start; }
+    &__link {
+        font-size: 1.5rem; color: $c-white; text-decoration: none; border-bottom: .1rem solid rgba(255,255,255,.3);
+        padding-bottom: .2rem; transition: color .25s ease, border-color .25s ease;
+        @include media($bp-tablet) { @include hover { color: $c-action; border-color: $c-action; } }
+    }
+}
+
+// Post end-of-article CTA band sits flush; give it a touch more top presence.
+.post-cta-band { margin-top: 2rem; }
+
+// ── Footer sitemap nav ───────────────────────────────────────
+.footer-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.2rem 2rem;
+    margin: 2rem 0 4rem;
+
+    @include media($bp-tablet) { grid-template-columns: repeat(4, 1fr); }
+
+    &__col { display: flex; flex-direction: column; gap: 1.1rem; }
+    &__head {
+        font-size: 1.2rem; letter-spacing: .16em; text-transform: uppercase;
+        color: $c-action; margin-bottom: .6rem;
+    }
+    a {
+        font-size: 1.6rem; color: rgba(255,255,255,.72); text-decoration: none;
+        transition: color .25s ease;
+        @include media($bp-tablet) { @include hover { color: $c-white; } }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "name": "acf/page-hero-section",
+    "title": "Page Hero Section",
+    "category": "neutech",
+    "keywords": ["hero", "title"],
+    "icon": "format-aside",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

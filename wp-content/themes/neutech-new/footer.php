@@ -73,6 +73,37 @@
                         <span class="btn__glow absolute"></span>
                     </a>
                 </div>
+                <div class="footer__block footer__block--nav footer-nav">
+                    <div class="footer-nav__col">
+                        <span class="footer-nav__head">Solutions</span>
+                        <a href="<?= esc_url(home_url('/services/custom-software-development/')); ?>">Custom Software</a>
+                        <a href="<?= esc_url(home_url('/services/staff-augmentation/')); ?>">Staff Augmentation</a>
+                        <a href="<?= esc_url(home_url('/services/web-application-development/')); ?>">Web Apps</a>
+                        <a href="<?= esc_url(home_url('/services/mobile-app-development/')); ?>">Mobile Apps</a>
+                        <a href="<?= esc_url(home_url('/services/ai-ml-data/')); ?>">AI/ML &amp; Data</a>
+                        <a href="<?= esc_url(home_url('/services/')); ?>">All solutions</a>
+                    </div>
+                    <div class="footer-nav__col">
+                        <span class="footer-nav__head">Industries</span>
+                        <a href="<?= esc_url(home_url('/industries/healthcare-software-development/')); ?>">Healthcare Software</a>
+                        <a href="<?= esc_url(home_url('/industries/fintech-software-development/')); ?>">Fintech Software</a>
+                        <a href="<?= esc_url(home_url('/hipaa-security/')); ?>">HIPAA &amp; Security</a>
+                        <a href="<?= esc_url(home_url('/work/')); ?>">Our Work</a>
+                    </div>
+                    <div class="footer-nav__col">
+                        <span class="footer-nav__head">Company</span>
+                        <a href="<?= esc_url(home_url('/our-team/')); ?>">About &amp; Team</a>
+                        <a href="<?= esc_url(home_url('/how-we-work/')); ?>">How We Work</a>
+                        <a href="<?= esc_url(home_url('/pricing/')); ?>">Pricing</a>
+                        <a href="<?= esc_url(home_url('/get-a-quote/')); ?>">Get a Quote</a>
+                    </div>
+                    <div class="footer-nav__col">
+                        <span class="footer-nav__head">Resources</span>
+                        <a href="<?= esc_url(home_url('/blog/')); ?>">Blog</a>
+                        <a href="<?= esc_url(home_url('/resources/')); ?>">Guides &amp; Tools</a>
+                        <a href="<?= esc_url(home_url('/guides/staff-augmentation-vs-managed-services/')); ?>">Comparison Guides</a>
+                    </div>
+                </div>
                 <div class="footer__block footer__block--contacts">
                         <?php
                             if (is_array($contacts) && !empty($contacts)):

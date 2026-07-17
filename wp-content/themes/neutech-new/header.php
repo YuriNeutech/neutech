@@ -3,27 +3,43 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
+    <?php // Site favicon (Neutech brand dot) — served from theme so it survives DB/uploads resets ?>
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo esc_url( get_theme_file_uri( 'assets/images/favicon-32.png' ) ); ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo esc_url( get_theme_file_uri( 'assets/images/favicon-16.png' ) ); ?>">
+    <link rel="icon" type="image/png" sizes="192x192" href="<?php echo esc_url( get_theme_file_uri( 'assets/images/favicon-192.png' ) ); ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url( get_theme_file_uri( 'assets/images/favicon-180.png' ) ); ?>">
+    <link rel="shortcut icon" href="<?php echo esc_url( get_theme_file_uri( 'assets/images/favicon-32.png' ) ); ?>">
+
     <?php
         // Prepare Social Data
         $share_title = wp_get_document_title();
-        $share_url   = get_permalink();
-        $share_desc  = get_bloginfo('description');
-        
-        $logo_id    = get_field('general_logo', 'option');
-        $share_img  = $logo_id ? wp_get_attachment_image_url($logo_id, 'full') : '';
+        $share_url   = is_front_page() ? home_url('/') : get_permalink();
+        // Per-page description (not the site tagline) so each URL shares uniquely.
+        $share_desc  = function_exists('neutech_truncate_desc')
+            ? neutech_truncate_desc( neutech_meta_description() )
+            : get_bloginfo('description');
 
-        if ( is_singular() && has_post_thumbnail() ) {
-            $share_img = get_the_post_thumbnail_url(get_the_ID(), 'large');
-        }
+        // Share image: post thumbnail when present, else the branded default.
+        $share_img = ( is_singular() && has_post_thumbnail() )
+            ? get_the_post_thumbnail_url(get_the_ID(), 'large')
+            : ( function_exists('neutech_default_share_image') ? neutech_default_share_image() : '' );
     ?>
 
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="<?= is_singular('post') ? 'article' : 'website'; ?>">
+    <meta property="og:site_name" content="<?= esc_attr(get_bloginfo('name')); ?>">
+    <meta property="og:locale" content="en_US">
     <meta property="og:url" content="<?= esc_url($share_url); ?>">
     <meta property="og:title" content="<?= esc_attr($share_title); ?>">
     <meta property="og:description" content="<?= esc_attr($share_desc); ?>">
     <?php if ($share_img): ?>
     <meta property="og:image" content="<?= esc_url($share_img); ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <?php endif; ?>
+    <?php if (is_singular('post')): ?>
+    <meta property="article:published_time" content="<?= esc_attr(get_the_date('c')); ?>">
+    <meta property="article:modified_time" content="<?= esc_attr(get_the_modified_date('c')); ?>">
     <?php endif; ?>
 
     <meta property="twitter:card" content="summary_large_image">
@@ -47,13 +63,13 @@
     <div class="header-wrapper w-full">
         <header class="header w-full <?php if ($header_theme):?>is-<?= $header_theme ?><?php endif;?>">
     		<?php
-    			$logo_id = get_field('general_logo', 'option');
-    			$logo_svg = null;
-
-    			if ($logo_id) {
-    				$logo_svg = \CleanTheme\SvgSupport::get_inline_svg( $logo_id );
-    			} else {
-    				$logo_svg = 'NeuTech.';
+    			// Prefer an uploaded SVG logo; fall back to the styled "neutech."
+    			// wordmark when none is set OR the referenced attachment is gone
+    			// (get_inline_svg returns '' for a missing/non-SVG file).
+    			$logo_id  = get_field('general_logo', 'option');
+    			$logo_svg = $logo_id ? \CleanTheme\SvgSupport::get_inline_svg( $logo_id ) : '';
+    			if ( empty( $logo_svg ) ) {
+    				$logo_svg = neutech_brandmark();
     			}
 
     			$cta = get_field('general_cta', 'option');
@@ -133,9 +149,11 @@
     			<?php
     				$logo_tag = is_front_page() ? 'div' : 'a';
     				$logo_attrs = is_front_page() ? '' : 'href="' . esc_url(home_url('/')) . '"';
+    				$logo_class = 'header__logo';
+    				if ( strpos( $logo_svg, 'brandmark' ) !== false ) { $logo_class .= ' header__logo--wordmark'; }
     			?>
     			<!-- Logo -->
-    			<<?= $logo_tag; ?> class="header__logo" <?= $logo_attrs; ?>>
+    			<<?= $logo_tag; ?> class="<?= esc_attr( $logo_class ); ?>" <?= $logo_attrs; ?> aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
     				<?=  $logo_svg ?>
     			</<?= $logo_tag; ?>>
 
@@ -170,7 +188,7 @@
     <?php if (is_front_page()):?>
 	<div class="preloader" id="preloader">
 		<div class="preloader__logo-wr">
-			<?=  $logo_svg ?>
+			<?= neutech_preloader_wordmark() ?>
 		</div>
 	</div>
     <?php endif;?>

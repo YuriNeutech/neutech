@@ -1,0 +1,22 @@
+{
+    "name": "acf/faq-section",
+    "title": "FAQ Section",
+    "description": "An accordion of questions and answers, with FAQPage schema.",
+    "category": "neutech",
+    "icon": "editor-help",
+    "keywords": ["faq", "accordion", "questions"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

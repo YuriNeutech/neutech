@@ -1,0 +1,11 @@
+.bordered-list {
+    li {
+        border-block-end: .2rem solid currentColor;
+        padding-block: .8rem;
+        
+        &:first-child {
+            border-block-start: .2rem solid currentColor;
+        }
+    }
+}
+// End inner

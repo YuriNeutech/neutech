@@ -1,0 +1,32 @@
+// ── Stats strip ──────────────────────────────────────────────
+.lp-stats {
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem 3rem;
+
+        @include media($bp-tablet) { grid-template-columns: repeat(4, 1fr); gap: 4rem 3.2rem; }
+    }
+
+    &__item {
+        padding-top: 2.4rem;
+        border-top: .1rem solid rgba($c-action-solid, .28);
+    }
+
+    &__num {
+        font-family: var(--wp--preset--font-family--heading);
+        font-size: clamp(3.4rem, 3.8vw, 5rem);
+        line-height: 1;
+        letter-spacing: -.03em;
+        color: $c-action;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+    }
+
+    &__label {
+        margin-top: 1.6rem;
+        font-size: 1.6rem;
+        line-height: 1.4;
+        color: #B9B9C0;
+    }
+}

@@ -1,0 +1,83 @@
+.features-grid {
+    &__subtitle {
+        margin-block-start: 2.8rem;
+
+        @include media($bp-desktop) {
+            margin-block-start: 6.6rem;
+        }
+    }
+
+    &__grid {
+        gap: 6.4rem;
+
+        &--row {
+            @include media($bp-desktop) {
+                flex-direction: row;
+            }
+        }
+
+        &--col {
+            @include media($bp-desktop) {
+                @for $i from 1 through 5 {
+                    &_#{$i} {
+                        grid-template-columns: repeat(#{$i}, 1fr);
+                    }
+                }
+            }
+        }
+
+        @include media($bp-wide) {
+            gap: 9.6rem;
+        }
+
+    }
+
+    &__card {
+        flex: 1;
+    }
+
+    &__text {
+        p {
+            &:not(:last-child) {
+                margin-block-end: 1em;
+            }
+        }
+    }
+
+    &__heading {
+        margin-block-end: 4rem;
+
+        @include media($bp-desktop) {
+            margin-block-end: 6rem;
+        }
+
+        @include media($bp-wide) {
+            margin-block-end: 9rem;
+        }
+    }
+
+    &__number,
+    &__text,
+    &__list, &__title {
+        margin-block-end: 2rem;
+
+        @include media($bp-desktop) {
+            margin-block-end: 3.4rem;
+        }
+    }
+
+    &__action-link {
+        margin-inline: auto;
+        width: max-content;
+        margin-block-start: 3rem;
+
+        @include media($bp-desktop) {
+            margin-block-start: 6rem;
+        }
+
+        @include media($bp-wide) {
+            margin-block-start: 6rem;
+        }
+    }
+}
+// End inner

@@ -1,0 +1,75 @@
+.cards {
+    &__container {
+        z-index: 1;
+    }
+
+    &__wrapper {
+        gap: 2.4rem;
+        align-items: center;
+
+        @include media($bp-desktop) {
+            flex-direction: row;
+        }
+
+        @include media($bp-wide) {
+            gap: 3.2rem;
+        }
+    }
+
+    &__arrow {
+        height: 1.9rem;
+        width: 1.1rem;
+        flex-shrink: 0;
+
+        @include media($bp-desktop) {
+            height: 3.7rem;
+            width: 2.5rem;
+            transform: rotate(-90deg);
+        }
+    }
+
+    &__text-card {
+        @include media($bp-desktop) {
+            flex: 1;
+            height: stretch;
+        }
+    }
+
+    &__subtitle, &__title {
+        margin-block-end: 4rem;
+
+        @include media($bp-desktop) {
+            margin-block-end: 6rem;
+            text-align: center;
+        }
+
+        @include media($bp-wide) {
+            margin-block-end: 9.6rem;
+        }
+    }
+
+    &__action-link {
+        margin-block-start: 6.4rem;
+        width: max-content;
+        margin-inline: auto;
+
+        @include media($bp-desktop) {
+            margin-block-start: 9.6rem;
+        }
+    }
+
+    &.bg--gradient {
+        background-color: $c-black;
+
+        &::after {
+            @include pseudo;
+            @include push--center-middle;
+            border-radius: 160rem;
+            background: $c-action;
+            filter: blur(15rem);
+            width: 90%;
+            height: 30%;
+        }
+    }
+}
+// End inenr

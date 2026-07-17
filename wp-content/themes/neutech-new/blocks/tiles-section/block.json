@@ -1,0 +1,17 @@
+{
+    "name": "acf/tiles-section",
+    "title": "Tiles Section",
+    "category": "neutech",
+    "keywords": ["content", "tags", "progress"],
+    "icon": "admin-page",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

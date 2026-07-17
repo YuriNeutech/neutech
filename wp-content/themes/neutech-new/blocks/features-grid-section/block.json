@@ -1,0 +1,22 @@
+{    
+    "name": "acf/featured-grid-section",
+    "title": "Grid Section",
+    "category": "neutech",
+    "icon": "grid-view",
+    "keywords": ["hero"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "_is_inserter_preview": true
+            }
+        }
+    }
+}

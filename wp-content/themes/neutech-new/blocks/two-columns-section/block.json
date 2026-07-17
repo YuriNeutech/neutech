@@ -1,0 +1,17 @@
+{
+    "name": "acf/two-col-section",
+    "title": "Two Columns",
+    "category": "neutech",
+    "keywords": ["image", "list", "content", "tags"],
+    "icon": "columns",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

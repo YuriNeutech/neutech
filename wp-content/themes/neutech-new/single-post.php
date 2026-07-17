@@ -14,6 +14,7 @@ while ( have_posts() ) :
     $reading_time = get_field('time_to_read', $post_id);
     $categories = get_the_category();
     $main_cat   = !empty($categories) ? $categories[0] : null;
+    $pillar     = function_exists('neutech_pillar_for_post') ? neutech_pillar_for_post($post_id) : null;
     $thumbnail  = get_the_post_thumbnail_url($post_id, 'mobile'); 
     $alt_text   = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true) ?: $title;
 ?>
@@ -107,6 +108,18 @@ while ( have_posts() ) :
             </div>
 
             <aside class="post-page__sidebar">
+                <?php if ($pillar) : ?>
+                <div class="post-cta-card">
+                    <span class="post-cta-card__eyebrow">Work with us</span>
+                    <p class="post-cta-card__title">Building <?= esc_html($pillar['label']); ?>?</p>
+                    <p class="post-cta-card__text">Neutech's senior engineers ship exactly this. Get a scoped path forward — no sales pitch.</p>
+                    <div class="post-cta-card__actions">
+                        <?php neutech_button('/get-a-quote/', 'Get a quote', 'accent'); ?>
+                        <a class="post-cta-card__link" href="<?= esc_url($pillar['url']); ?>">Explore <?= esc_html($pillar['label']); ?> &rarr;</a>
+                    </div>
+                </div>
+                <?php endif; ?>
+
                 <div class="related-articles flex-col">
                     <h3 class="related-articles__title">Similar articles</h3>
                     
@@ -139,7 +152,25 @@ while ( have_posts() ) :
     </div>
 </article>
 
-<?php 
+<?php if ($pillar) : ?>
+<section class="lp-section lp-cta post-cta-band" data-header-theme="dark">
+    <div class="lp-cta__glow absolute"></div>
+    <div class="container">
+        <div class="lp-cta__inner">
+            <h2 class="lp-cta__title">Ready to build, not just read?</h2>
+            <p class="lp-cta__text">If <?= esc_html($pillar['label']); ?> is on your roadmap, Neutech's senior engineers can help you scope and ship it.</p>
+            <div class="lp-cta__actions">
+                <?php
+                neutech_button('/get-a-quote/', 'Get a quote', 'accent');
+                neutech_button($pillar['url'], 'Explore ' . $pillar['label'], 'white-border');
+                ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
+<?php
 endwhile; // End of the loop.
-get_footer(); 
+get_footer();
 ?>

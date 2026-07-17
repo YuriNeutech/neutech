@@ -1,0 +1,13 @@
+ul.ul-list {
+    list-style-type: disc;
+    padding-inline-start: 1.2em;
+
+    & > li {
+        list-style-type: disc;
+
+        &:not(:last-child) {
+            margin-block-end: .6em;
+        }
+    }
+}
+// End inner

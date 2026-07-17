@@ -1,0 +1,138 @@
+.text-card {
+    padding: 2.4rem;
+    border-radius: 2.4rem;
+    box-shadow: 0 8px 20px 0 rgba(134, 144, 155, 0.30);
+
+    @include media($bp-desktop) {
+        padding: 3.2rem;
+        border-radius: 3.2rem;
+    }
+
+    @include media($bp-wide) {
+        padding: 4.8rem;
+        border-radius: 4.8rem;
+    }
+
+    &__title, &__tag, &__text, &__progress, &__icon, &__list, &__txt-inblock {
+        margin-block-end: 3rem;
+
+        @include media($bp-desktop) {
+            margin-block-end: 4rem;
+        }
+
+        // @include media($bp-wide) {
+        //     margin-block-end: 6rem;
+        // }
+    }
+
+    &__txt-inblock {
+        border-radius: .5em;
+        line-height: 1.25;
+        padding: 1.8rem 2.4rem;
+        line-height: normal;
+        font-weight: 500;
+
+        @include media($bp-wide) {
+            padding: 1.8rem 3.2rem;
+        }
+    }
+
+    &__text {
+        @include media($bp-wide) {
+            margin-block-end: 4rem;
+        }
+    }
+
+    &__progress-item:not(:last-child) {
+        flex-grow: 1;
+        display: flex;
+
+        &::after {
+            content: ">";
+            margin-inline: auto;
+            display: inline-block;
+        }
+    }
+
+    &__icon {
+        @include square(2.4rem);
+
+        @include media($bp-desktop) {
+            @include square(3.2rem);
+        }
+
+        @include media($bp-wide) {
+            @include square(4.8rem);
+        }
+    }
+
+    &__heading {
+        gap: 1.6rem;
+        padding-block-end: 2.4rem;
+        border-block-end: .2rem solid currentColor;
+        margin-block-end: 2.4rem;
+
+        svg {
+            flex-shrink: 0;
+        }
+
+        @include media($bp-tablet) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    }
+
+    &__subtitle {
+        gap: 1.6rem;
+    }
+
+    & > *:last-child {
+        margin: 0;
+
+        @include media($bp-desktop) {
+            margin-block-start: auto;
+        }
+    }
+
+    &.bg--gradient {
+        border-radius: 4.8rem;
+        background: linear-gradient(103deg, rgba(239, 63, 80, 0.04) 103.82%, rgba(239, 63, 80, 0.00) 103.82%, rgba(239, 63, 80, 0.04) 103.82%);
+        position: relative;
+    }
+
+    &__shine {
+        pointer-events: none;
+        border-radius: inherit;
+        border: .1rem solid transparent;
+        width: 100%;
+        height: 100%;
+        min-height: 0px;
+        aspect-ratio: 1;
+        left: auto;
+        z-index: 1;
+        --start: 0%;
+        background: conic-gradient(from var(--conic, -45deg) at center in oklch, transparent var(--start, 0%), rgba(249, 202, 207), transparent var(--end, 50%)) border-box;
+        -webkit-mask: linear-gradient(transparent), linear-gradient(black);
+        mask: linear-gradient(transparent), linear-gradient(black);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-clip: padding-box, border-box;
+        mask-clip: padding-box, border-box;
+        -webkit-mask-composite: source-out;
+        mask-composite: subtract;
+        opacity: .4;
+
+        &--top {
+            inset-inline-end: 0;
+            inset-block-start: 0;
+        }
+
+        &--bottom {
+            --conic: 135deg;
+            inset-inline-start: 0;
+            inset-block-end: 0;
+        }
+    }
+}
+// End inner

@@ -1,0 +1,281 @@
+.two-col {
+    &__title {
+        margin-block-end: .85em;
+    }
+
+    &__text {
+        font-weight: 400;
+        margin-block-end: 2em;
+
+        @include media($bp-desktop) {
+            margin-block-end: 2.5em;
+        }
+
+        p {
+            &:not(:last-child) {
+                margin-block-end: 1em;
+            }
+        }
+    }
+
+    &__quote {
+        margin-block-end: 4.2rem;
+    }
+
+    &__img {
+        img {
+            object-fit: contain;
+            height: auto;
+            z-index: 1;
+        }
+
+        &--shadow {
+            &::after {
+                @include pseudo;
+                background-color: $c-action;
+                width: 100%;
+                @include push--center-middle;
+                height: 80%;
+                border-radius: 50%;
+                filter: blur(50px);
+
+                @include media($bp-desktop) {
+                    filter: blur(100px);
+                    height: 33%;
+                }
+            }
+        }
+
+        &--size {
+            &_thumbnail {
+                width: 50%;
+
+                @include media($bp-desktop) {
+                    width: 75%;
+                    max-width: 37.6rem;
+                }
+
+                &.two-col__img--shadow {
+                    @include media($bp-desktop) {
+                        &::after {
+                            filter: blur(100px);
+                            height: 90%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__heading {
+        align-items: flex-start;
+        margin-block-end: 3.2rem;
+
+        @include media($bp-desktop) {
+            order: -1;
+            justify-content: flex-start;
+            gap: 3.2rem;
+        }
+    
+    }
+
+    ul {
+        &.two-col__list {
+            margin-block-end: 6.4rem;
+
+            @include media($bp-desktop) {       
+                margin-block-end: 9.6rem;
+            }
+        }
+    }
+
+    &__img, &__list, &__tags, &__cards, &__btn {
+        margin-block-end: 6.4rem;
+
+        @include media($bp-desktop) {       
+            margin-block-end: 9rem;
+        }
+        
+    }
+
+    &__tagline {
+        margin-block-end: 3.2rem;
+
+        @include media($bp-desktop) {       
+            margin-block-end: 9.6rem;
+        }
+    }
+
+    &__cards {
+        gap: 2.4rem;
+
+        &::after {
+            @include pseudo;
+            @include push--center-middle;
+            width: 120%;
+            height: 33%;
+            background-color: $c-action;
+            filter: blur(150px);
+        }
+
+        @include media($bp-tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include media($bp-desktop) {
+            grid-template-columns: 1fr;
+        }
+
+        @include media($bp-wide) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3.2rem;
+        }
+
+    }
+
+    &__card {
+        z-index: 1;
+
+        @include media($bp-wide) {
+            padding-block: 3.8rem;
+        }
+    }
+    
+    &__btn {
+        width: max-content;
+        margin-inline: auto;
+
+        @include media($bp-desktop) {
+            margin-inline: 0;
+        }
+    }
+
+    &__col {
+        @include media($bp-desktop) {
+            & > *:last-child, & > ul:last-child {
+                margin-block: 0;
+            }
+
+            .two-col__heading {
+                margin-block-end: 23.8rem;
+            }
+        }
+
+        &--narrow {
+            @include media($bp-desktop) {
+                & > * {
+                    margin-inline-end: auto;
+                }
+            }
+        }
+
+        &--second {
+            @include media($bp-desktop) {
+                & > * {
+                    margin-inline-start: auto;
+                }
+            }
+        }
+    }
+
+    &__container {
+        @include media($bp-desktop) {
+            grid-template-columns: min(38%, 51.2rem) min(55%, 78.4rem);
+            justify-content: space-between;
+        }
+
+        &--reverse {
+            @include media($bp-desktop) {
+                grid-template-columns: min(55%, 78.4rem) min(38%, 51.2rem);
+
+                .two-col {
+                    &__col {
+                        &--second {
+                            order: -1;
+                        }
+
+                        &--narrow {
+                            @include media($bp-desktop) {
+                                & > * {
+                                    margin-inline-end: 0;
+                                    margin-inline-start: auto;
+                                }
+                            }
+                        }
+
+                        &--second {
+                            @include media($bp-desktop) {
+                                & > * {
+                                    margin-inline-start: 0;
+                                    margin-inline-end: auto;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+// End inner
+
+.two-col--bordered {
+    .two-col {
+        &__container {
+            &::after {
+                @include pseudo;
+                height: 0.2rem;
+                width: 90vw;
+                inset-block-end: 0;
+                background-color: currentColor;
+                inset-inline-start: 50%;
+                transform: translateX(-50%);
+
+                @include media($bp-desktop) {
+                    width: 83vw;
+                }
+            }
+        }
+    }
+}
+// End BORDERED
+
+.two-col--in-block {
+    .two-col {
+        &__container {
+            padding: 2.4rem;
+            border-radius: 1.34em;
+
+            @include media($bp-desktop) {
+                padding: 3.2rem;
+                grid-template-columns: min(38%, 51.2rem) min(55%, 72rem);
+            } 
+
+            @include media($bp-wide) {
+                padding: 5.6rem 6.4rem;
+                border-radius: 2.68em;
+            }
+        
+        }
+
+        &__col--second {
+            @include media($bp-desktop) {
+                grid-row: span 2;
+            }
+        }
+
+        &__action-link {
+            margin-inline: auto;
+            width: max-content;
+            gap: 1rem;
+
+            @include media($bp-desktop) {
+                margin: auto 0 0;
+            }
+        }
+    }
+    // End inner
+}
+// End IN BLOCK

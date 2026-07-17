@@ -1,0 +1,9 @@
+// Scoped typography reset for client marketing pages ported from Kinsta staging.
+// Our theme applies a global `h1..h4 { text-transform: lowercase }` brand style for
+// the funnel pages; Yuri's original marketing pages use sentence/Title case + an
+// opt-in `.lower` utility. Scope those originals to `.ntc-ported` (see body_class).
+.ntc-ported {
+    h1, h2, h3, h4 { text-transform: none; }
+    .lower { text-transform: lowercase; }
+    .fz-h1, .fz-h2, .fz-h3, .fz-h4 { line-height: normal; }
+}

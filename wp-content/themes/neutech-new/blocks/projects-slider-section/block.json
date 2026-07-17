@@ -1,0 +1,17 @@
+{
+    "name": "acf/projects-slider-section",
+    "title": "We Specialize Section",
+    "category": "neutech",
+    "keywords": ["slider", "title", "content", "tags"],
+    "icon": "feedback",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

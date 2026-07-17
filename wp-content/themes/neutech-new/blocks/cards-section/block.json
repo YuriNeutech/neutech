@@ -1,0 +1,22 @@
+{
+    "name": "acf/cards-section",
+    "title": "Cards Section",
+    "description": "A responsive grid of cards (2 or 3 columns), each optionally linked.",
+    "category": "neutech",
+    "icon": "grid-view",
+    "keywords": ["cards", "grid", "services", "features"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

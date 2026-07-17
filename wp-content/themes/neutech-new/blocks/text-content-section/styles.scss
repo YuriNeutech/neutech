@@ -1,0 +1,87 @@
+.text-content {
+
+    @include media($bp-desktop) {
+        padding-block: 9.6rem;
+    }
+
+    &__tag, &__title, &__text, &__btn {
+        margin-block-end: 3rem;
+
+        @include media($bp-desktop) {
+            margin-block-end: 7.2rem;
+        }
+    }
+
+    &__btn {
+        margin-inline: auto;
+        width: max-content;
+    }
+
+    &__container {
+        @include media($bp-desktop) {
+            width: min(88vw, 105.6rem);
+        }
+
+        & > *:last-child {
+            margin: 0 auto;
+        }
+    }
+
+}
+// End inner
+
+.text-content--bordered {
+    &_below {
+        .text-content {
+            &__container {
+                padding-block-end: 6.4rem;
+
+                @include media($bp-desktop) {
+                    padding-block-end: 9.6rem;
+                }
+                &::after {
+                    @include pseudo;
+                    height: 0.2rem;
+                    width: 90vw;
+                    inset-block-end: 0;
+                    background-color: currentColor;
+                    inset-inline-start: 50%;
+                    transform: translateX(-50%);
+
+                    @include media($bp-desktop) {
+                        width: 83vw;
+                    }
+                }
+            }
+        }
+    }
+    // End BELOW
+
+    &_above {
+        .text-content {
+            &__container {
+                padding-block-start: 6.4rem;
+
+                @include media($bp-desktop) {
+                    padding-block-start: 9.6rem;
+                }
+
+                &::before {
+                    @include pseudo;
+                    height: 0.2rem;
+                    width: 90vw;
+                    inset-block-start: 0;
+                    background-color: currentColor;
+                    inset-inline-start: 50%;
+                    transform: translateX(-50%);
+
+                    @include media($bp-desktop) {
+                        width: 83vw;
+                    }
+                }
+            }
+        }
+    }
+    // End ABOVE
+}
+// eND BORDERED MODE

@@ -31,6 +31,11 @@
 
     &__title {
         margin-block-start: 2.4rem;
+        // Global `h4 { text-transform: lowercase }` is the brand style for nav /
+        // logo, but here it flattens proper nouns ("AI Native Agency", "The
+        // Neutech Wave" → "ai native agency"). Render these list headings in
+        // their authored Title Case.
+        text-transform: none;
 
         @include media($bp-wide) {
             margin-block-start: 0;

@@ -15,6 +15,8 @@ $bp-full-hd: 1920px;
 
 // Colors
 $c-action: var(--wp--preset--color--action);
+// Canonical Sass color of the accent (#EF3F50) — for alpha tints/glows of the SAME token.
+$c-action-solid: #EF3F50;
 $c-black: var(--wp--preset--color--black);
 $c-gray: var(--wp--preset--color--gray);
 $c-light: var(--wp--preset--color--light);
