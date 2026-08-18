@@ -24,6 +24,13 @@ add_filter( 'body_class', function ( $classes ) {
     if ( is_page() && get_post_meta( get_queried_object_id(), '_ntc_ported', true ) ) {
         $classes[] = 'ntc-ported';
     }
+    // Per-page hook for slug-scoped CSS (WP core only emits page-id-N).
+    if ( is_page() ) {
+        $slug = get_post_field( 'post_name', get_queried_object_id() );
+        if ( $slug ) {
+            $classes[] = 'ntc-page-' . sanitize_html_class( $slug );
+        }
+    }
     return $classes;
 } );
 

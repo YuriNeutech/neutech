@@ -51,7 +51,8 @@
     }
 ?>
 
-<section class="<?= esc_attr($section_classes); ?>" data-header-theme="hidden">
+<?php // Anchor target for "Watch our video" style CTAs (markup #25). ?>
+<section id="campus-video" class="<?= esc_attr($section_classes); ?>" data-header-theme="hidden">
     <div class="full-video__player">
         <?php if ($video_mobile_id): ?>
             <div class="full-video__iframe wh-full full-video__iframe--mobile"  data-vimeomobile-id="<?= esc_attr($video_mobile_id); ?>"></div>

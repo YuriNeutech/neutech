@@ -109,7 +109,7 @@
                     <div class="footer-nav__col">
                         <span class="footer-nav__head">Resources</span>
                         <a href="<?= esc_url(home_url('/blog/')); ?>">Blog</a>
-                        <a href="<?= esc_url(home_url('/resources/')); ?>">Guides &amp; Tools</a>
+                        <?php // /resources/ was unpublished (markup #5) — it advertised downloads that did not exist. ?>
                         <a href="<?= esc_url(home_url('/guides/staff-augmentation-vs-managed-services/')); ?>">Comparison Guides</a>
                     </div>
                 </div>

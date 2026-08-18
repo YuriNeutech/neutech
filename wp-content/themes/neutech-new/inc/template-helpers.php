@@ -137,6 +137,12 @@ function neutech_handle_lead() {
     $company = sanitize_text_field($_POST['company'] ?? '');
     $type    = sanitize_text_field($_POST['project_type'] ?? '');
     $message = sanitize_textarea_field($_POST['message'] ?? '');
+    // Gated-download leads carry the magnet slug instead of a project brief.
+    $magnet  = sanitize_key($_POST['magnet'] ?? '');
+    if ($magnet) {
+        $type    = 'Guide download: ' . $magnet;
+        $message = 'Downloaded the gated guide "' . $magnet . '".';
+    }
 
     if ( empty($name) || empty($email) || ! is_email($email) ) {
         wp_send_json(['success' => false, 'error' => 'invalid']);
@@ -156,5 +162,19 @@ function neutech_handle_lead() {
     $to = get_option('admin_email');
     wp_mail($to, 'New Neutech lead: ' . $name, "Name: {$name}\nEmail: {$email}\nCompany: {$company}\nNeeds: {$type}\n\n{$message}");
 
-    wp_send_json(['success' => (bool) $lead_id]);
+    $out = ['success' => (bool) $lead_id];
+    if ($magnet) {
+        $out['file'] = neutech_magnet_url($magnet);
+    }
+    wp_send_json($out);
+}
+
+/**
+ * Downloadable lead magnets, keyed by slug. The file lives in the media library
+ * so the client can swap it without a deploy; the option below holds its ID.
+ */
+function neutech_magnet_url($slug) {
+    $map = get_option('neutech_magnets', []);
+    if (empty($map[$slug])) return '';
+    return (string) wp_get_attachment_url($map[$slug]);
 }

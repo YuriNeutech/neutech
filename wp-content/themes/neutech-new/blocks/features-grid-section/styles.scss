@@ -66,6 +66,17 @@
         }
     }
 
+    // markup #46 — the highlighted closing line sat flush against the ticked
+    // list above it (the shared margin-block-end resolves to 0 here), so the
+    // emphasis read as just another list row.
+    &__list + &__text {
+        margin-block-start: 2rem;
+
+        @include media($bp-desktop) {
+            margin-block-start: 3.4rem;
+        }
+    }
+
     &__action-link {
         margin-inline: auto;
         width: max-content;

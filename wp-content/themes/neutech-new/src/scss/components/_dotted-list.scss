@@ -13,14 +13,14 @@
 
         &::before {
             @include square(1.6rem);
-            border: .15rem solid rgba(0, 0, 0, 0.2);
+            border: .15rem solid rgba($c-action-solid, .35);
         }
 
         &::after {
             @include square(.4rem);
             inset-inline-start: .6rem;
             inset-block-start:  calc(15% + .6rem);
-            background-color: $c-black;
+            background-color: $c-action-solid;
         }
 
         &:not(:last-child) {

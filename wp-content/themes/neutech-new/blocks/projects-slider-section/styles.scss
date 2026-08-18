@@ -14,6 +14,12 @@
         align-items: unset;
     }
 
+    // Bottom-align the copy with the carousel so both columns end on the same
+    // line and the section keeps its padding rhythm at every width. (markup #17)
+    &__bottom.two-col__container {
+        align-items: end;
+    }
+
     &__slide {
         flex: 0 0 auto;
         min-width: 0;

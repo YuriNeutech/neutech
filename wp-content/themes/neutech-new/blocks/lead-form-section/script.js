@@ -25,10 +25,23 @@ export default function initLeadForm() {
         status.className = 'lp-form__status';
         status.textContent = 'Sending…';
 
-        fetch(form.action, { method: 'POST', body: new FormData(form) })
+        // NB: `form.action` resolves to the hidden <input name="action">, not the
+        // form's URL (DOM clobbering), so read the attribute explicitly.
+        const endpoint = form.getAttribute('action');
+
+        fetch(endpoint, { method: 'POST', body: new FormData(form) })
             .then((r) => r.json().catch(() => ({ success: r.ok })))
             .then((res) => {
-                if (res && res.success) {
+                if (res && res.success && res.file) {
+                    // Gated download: hand the file over immediately, and leave a
+                    // visible link in case the browser blocks the programmatic open.
+                    form.reset();
+                    status.className = 'lp-form__status is-ok';
+                    status.innerHTML =
+                        'Thanks — your guide is downloading. ' +
+                        '<a href="' + res.file + '" target="_blank" rel="noopener">Download again</a>.';
+                    window.open(res.file, '_blank', 'noopener');
+                } else if (res && res.success) {
                     form.reset();
                     status.className = 'lp-form__status is-ok';
                     status.textContent = "Thanks — we'll be in touch within one business day.";

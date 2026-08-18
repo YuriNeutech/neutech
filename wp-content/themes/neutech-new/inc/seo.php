@@ -64,7 +64,6 @@ function neutech_serve_llms_txt() {
     $lines[] = "- [Selected Work]({$home}/work/)";
     $lines[] = "- [About / Our Team]({$home}/our-team/)";
     $lines[] = "- [How We Work]({$home}/how-we-work/)";
-    $lines[] = "- [Resources & Guides]({$home}/resources/)";
     $lines[] = "- [Get a Quote]({$home}/get-a-quote/)";
     $lines[] = "- [Blog]({$home}/blog/) — engineering guides across healthcare, fintech, cloud, data, and product";
     $lines[] = '';

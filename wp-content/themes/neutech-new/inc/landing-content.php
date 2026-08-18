@@ -15,9 +15,9 @@ function neutech_landing_content() {
         'title' => 'Why teams build with Neutech',
         'items' => [
             ['num' => 'Senior', 'label' => 'Engineers lead every engagement'],
-            ['num' => 'US-based', 'label' => 'HQ in Orange County, California'],
+            ['num' => 'Global', 'label' => 'Leadership and engineering across the US, LATAM, and Europe'],
             ['num' => 'Full-cycle', 'label' => 'Discovery, build, QA, and support'],
-            ['num' => 'Outcome', 'label' => 'We own delivery, not just tickets'],
+            ['num' => 'Quality', 'label' => 'Battle-tested engineers, held to a higher bar'],
         ],
     ];
 
@@ -649,20 +649,20 @@ function neutech_landing_content() {
     // ══════════════════════════════════════════════════════════
     'our-team' => [
         ['type' => 'hero', 'eyebrow' => 'About Neutech',
-            'title' => 'Senior engineers who own the outcome',
-            'subtitle' => 'Neutech is a US-based product engineering team headquartered in Orange County, California. We build software that businesses run on — led by senior people, not juniors learning on your budget.',
+            'title' => 'We build the engine. You build the car.',
+            'subtitle' => 'We\'re obsessed with one thing: the quality of the engineer. Every vehicle is only as good as its engine, and we\'ve spent years perfecting ours — senior engineers trained on real enterprise systems, held to a bar most firms don\'t attempt. And we like the work others don\'t: the high-paced startup racing to ship, and the highly regulated enterprise where nothing ships without scrutiny. Different vehicles. Same engine.',
             'primary' => $quote, 'secondary' => $work],
         ['type' => 'rich', 'theme' => 'white', 'eyebrow' => 'Who we are',
-            'title' => 'A senior team, by design',
-            'body' => '<p><strong>[Placeholder — awaiting company copy from the client.]</strong> Neutech was founded on a simple idea: businesses deserve software built by engineers who have shipped before. We keep teams small, senior, and accountable for outcomes.</p>'
-                . '<ul><li>US-based, HQ in Orange County, California</li><li>Senior engineers on every engagement</li><li>Full-lifecycle: discovery, build, QA, and support</li><li>Deep focus in healthcare and fintech software</li></ul>'],
+            'title' => 'Built in California. Engineered across three continents.',
+            'body' => '<p>Neutech is headquartered in Orange County, California, with our engineering hub anchored by two offices in S&atilde;o Paulo, Brazil — a real campus where 350+ engineers collaborate, train, and ship, not a mailing address. From there, our footprint extends across Latin America, the United States, and Europe, giving clients senior talent that works their hours, speaks their language, and understands their market.</p>'
+                . '<p>That structure is deliberate — and so is our leadership. Neutech is run by executives on the ground on both sides of the operation: client partnership and growth in California, engineering and delivery leadership in S&atilde;o Paulo, with reach into Europe for clients and talent operating across time zones. No offshore black box, no satellite office running on autopilot — senior leadership everywhere the work happens.</p>'
+                . '<ul><li>HQ in Orange County, California</li><li>Two offices in S&atilde;o Paulo — 350+ engineers on campus</li><li>Presence across LATAM, the US, and Europe</li><li>Executive leadership in both the US and Brazil</li><li>Senior engineers on every engagement</li><li>Full-lifecycle: discovery, build, QA, and support</li></ul>'],
         ['type' => 'cards', 'theme' => 'light', 'eyebrow' => 'Leadership', 'title' => 'The people behind the work',
-            'intro' => 'Placeholder profiles — real team bios and photos to be supplied by the client.',
             'columns' => 3,
             'items' => [
-                ['eyebrow' => 'President & CEO', 'title' => 'Jared Neutel', 'text' => '[Bio placeholder] Leads Neutech\'s vision and client partnerships.'],
-                ['eyebrow' => 'Engineering', 'title' => 'Team Lead', 'text' => '[Bio placeholder] Senior engineering leadership across delivery.'],
-                ['eyebrow' => 'Delivery', 'title' => 'Client Success', 'text' => '[Bio placeholder] Keeps every engagement on track and transparent.'],
+                ['eyebrow' => 'President & CEO', 'title' => 'Jared Neutel', 'text' => 'Leads Neutech\'s vision, growth, and client partnerships. Jared works directly with every client relationship — from first conversation through delivery — and splits his time between California and S&atilde;o Paulo, staying close to both sides of the operation.'],
+                ['eyebrow' => 'CTO', 'title' => 'Rafael Goncalves', 'text' => 'Leads Neutech\'s global engineering organization from S&atilde;o Paulo. Rafael architected infrastructure for the Central Bank of Brazil and has led systems processing billions in daily transactions. He oversees the Residency Program and the technical bar every Neutech engineer has to clear.'],
+                ['eyebrow' => 'COO', 'title' => 'Gustavo Haramura', 'text' => 'Leads global operations and delivery across every engagement. Gustavo owns the machinery that makes month-to-month flexibility possible — onboarding engineers in one to two weeks, keeping engagements on track, and making sure every client always knows exactly where things stand.'],
             ]],
         $why_stats,
         $cta('Want to work with a senior team?', 'Tell us what you\'re building. You\'ll talk to an engineer, not a salesperson.'),
@@ -670,20 +670,30 @@ function neutech_landing_content() {
 
     'how-we-work' => [
         ['type' => 'hero', 'eyebrow' => 'How We Work',
-            'title' => 'A process built to de-risk your build',
-            'subtitle' => 'Short discovery, senior delivery, and honest communication — so you know the cost, the plan, and the status at every step.',
+            'title' => 'Two ways to engage.<br>One standard of engineer.',
+            'subtitle' => 'Every Neutech engagement runs on the same foundation: senior engineers, EST-aligned and English-first, on flexible month-to-month terms. The difference between our two models isn\'t the talent — it\'s who\'s steering. Pick the path that matches how you want to work.',
             'primary' => $quote, 'secondary' => $work],
-        ['type' => 'cards', 'theme' => 'white', 'eyebrow' => 'Our process', 'title' => 'From first call to shipped software',
-            'intro' => 'Placeholder outline — refine with the client\'s actual delivery methodology.',
-            'columns' => 3,
+        ['type' => 'cards', 'theme' => 'white', 'columns' => 2, 'plain' => true,
             'items' => [
-                ['eyebrow' => 'Step 1', 'title' => 'Discovery', 'text' => 'We scope the work, surface the risks, and give you a fixed range before you commit.'],
-                ['eyebrow' => 'Step 2', 'title' => 'Architecture', 'text' => 'Senior engineers design a solution that fits your systems and compliance needs.'],
-                ['eyebrow' => 'Step 3', 'title' => 'Build', 'text' => 'Iterative delivery with working software early and often — no black boxes.'],
-                ['eyebrow' => 'Step 4', 'title' => 'QA & Compliance', 'text' => 'Automated testing and, where needed, HIPAA/SOC 2 controls built in.'],
-                ['eyebrow' => 'Step 5', 'title' => 'Launch', 'text' => 'A smooth release with the documentation your team needs to own it.'],
-                ['eyebrow' => 'Step 6', 'title' => 'Support', 'text' => 'Maintenance and continued delivery through a dedicated-team or retainer model.'],
+                [
+                    'title' => 'Staff Augmentation',
+                    'lead'  => 'Your team. Your process. Our engineers.',
+                    'text'  => 'Senior engineers who plug directly into your team — your standups, your tools, your company email. You interview them your way and direct the work day to day; we handle recruiting, HR, payroll, and replacement risk behind the scenes. Ramp up before a big push, ramp down when it ships. No recruiting fees, no headcount, no hiring overhang.',
+                    'note'  => 'This is your path if: you have technical leadership and a clear roadmap — what you need is proven senior hands executing under your direction, fast.',
+                    'url'   => '/services/staff-augmentation/',
+                    'link_label' => 'Explore Staff Augmentation',
+                ],
+                [
+                    'title' => 'The Wave',
+                    'lead'  => 'Tell us the outcome. We ship it.',
+                    'text'  => 'A Neutech-led delivery team — senior engineers, architecture, and project management under one roof — that takes your product from discovery to shipped. It\'s powered by our AI-native Residency Program: engineers trained on real enterprise systems who arrive already battle-tested, in coordinated waves, so momentum never stalls between phases. You own the result; we own the delivery.',
+                    'note'  => 'This is your path if: you need something built — an MVP, a platform, a legacy modernization — and you\'d rather own the outcome than manage the process.',
+                    'url'   => '/the-neutech-wave/',
+                    'link_label' => 'Ride The Wave',
+                ],
             ]],
+        ['type' => 'rich', 'theme' => 'white',
+            'body' => '<p>Still deciding? The simplest test: if you\'ll manage the engineers, that\'s Staff Augmentation. If you want us to manage the delivery, that\'s The Wave. Either way, you\'re getting the same seniors — just tell us where you want to sit.</p>'],
         ['type' => 'faq', 'eyebrow' => 'FAQ', 'title' => 'How we work — questions',
             'items' => [
                 ['q' => 'How do engagements start?', 'a' => 'With a short, paid discovery that scopes the work and gives you a fixed range before any full build commitment.'],
@@ -704,8 +714,12 @@ function neutech_landing_content() {
         ['type' => 'rich', 'theme' => 'white', 'eyebrow' => 'The short answer',
             'title' => 'Direction vs outcome',
             'body' => '<p><strong>Staff augmentation</strong> adds senior engineers who work <em>under your direction</em> and inside your process — you own the roadmap and the management. <strong>Managed services</strong> hand an <em>outcome</em> to a vendor who owns delivery end to end.</p>'
-                . '<ul><li>Choose staff augmentation when you have strong product/eng leadership and just need capacity or a specific skill.</li><li>Choose managed services when you want a team to own a deliverable and you don\'t want to manage the day-to-day.</li><li>Many teams mix both — augment the core team, and hand discrete projects to a managed pod.</li></ul>'
-                . '<p>[Placeholder guide — expand with detailed cost, control, and risk comparison.]</p>'],
+                . '<ul><li>Choose staff augmentation when you have strong product/eng leadership and just need capacity or a specific skill.</li><li>Choose managed services when you want a team to own a deliverable and you don\'t want to manage the day-to-day.</li><li>Many teams mix both — augment the core team, and hand discrete projects to a managed pod.</li></ul>'],
+        ['type' => 'magnet', 'eyebrow' => 'Free guide',
+            'title' => 'The full comparison, in one PDF',
+            'intro' => 'Cost, control, and risk side by side — including when we\'d tell you not to use us. Six pages, no gate beyond your name and email.',
+            'magnet' => 'staffaug_vs_managed',
+            'label' => 'Download Comparison Guide'],
         ['type' => 'faq', 'eyebrow' => 'FAQ', 'title' => 'Common questions',
             'items' => [
                 ['q' => 'Which is cheaper?', 'a' => 'Staff augmentation usually has a lower headline rate; managed services can be cheaper in total when you factor in the management overhead you avoid.'],
@@ -768,6 +782,9 @@ function neutech_landing_content() {
 
     // ══════════════════════════════════════════════════════════
     //  RESOURCES / LEAD MAGNETS  (/resources/)
+    //  Unpublished on the client's request (markup #5): it advertised six
+    //  downloads that were never produced. Kept here so the page can be
+    //  restored once real assets exist — see the `magnet` section type.
     // ══════════════════════════════════════════════════════════
     'resources' => [
         ['type' => 'hero', 'eyebrow' => 'Resources',

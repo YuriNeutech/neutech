@@ -97,6 +97,42 @@
         font-variant-numeric: tabular-nums;
     }
 
+    // Lead-in line above the body copy (two-choice cards).
+    &__lead {
+        font-family: var(--wp--preset--font-family--heading);
+        font-size: 1.7rem;
+        line-height: 1.35;
+        color: $c-black;
+        margin-bottom: 1rem;
+    }
+
+    // Qualifier line under the body copy ("This is your path if: …").
+    &__note {
+        margin-top: 1.6rem;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        color: #5A5A60;
+        padding-top: 1.6rem;
+        border-top: .1rem solid #E7E7EA;
+    }
+
+    // Labelled link row (label + arrow) at the foot of a card.
+    &__cta {
+        margin-top: 2.4rem;
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+
+        .lp-cards__arrow { margin-top: 0; }
+    }
+
+    &__cta-label {
+        font-family: var(--wp--preset--font-family--heading);
+        font-size: 1.6rem;
+        color: $c-black;
+        transition: color .35s ease;
+    }
+
     &__arrow {
         margin-top: 2.4rem;
         width: 4.4rem; height: 4.4rem;
@@ -108,3 +144,24 @@
         svg { width: 1.8rem; height: 1.8rem; stroke: $c-black; transition: stroke .35s ease; }
     }
 }
+
+// ── Plain grid: every card reads identically ─────────────────
+// Drops the editorial 01–0n counters (white band) and the featured
+// first-card treatment (light band) so a 2-choice grid stays symmetrical.
+.lp-cards--plain {
+    .lp-section--white & .lp-cards__item::after,
+    .lp-cards__item::after { content: none; }
+
+    .lp-section--white & .lp-cards__title,
+    .lp-cards__title { padding-right: 0; }
+
+    .lp-section--light & .lp-cards__item:first-child {
+        border-color: #E7E7EA;
+        background: $c-white;
+    }
+
+    .lp-cards__item { height: 100%; }
+}
+
+// Hover on a labelled card CTA carries the label with it.
+.lp-cards__item:hover .lp-cards__cta-label { color: $c-action; }

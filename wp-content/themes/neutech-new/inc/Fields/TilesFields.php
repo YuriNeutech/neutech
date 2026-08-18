@@ -97,6 +97,7 @@ class TilesFields {
                         ))
                     ->endRepeater()
                 ->addLayout(ListBlock::getFields('ticked_list_block'), array('label' => 'Ticked List'))
+                ->addLayout(ListBlock::getFields('crossed_list_block'), array('label' => 'Crossed List'))
                 ->addLayout(ListBlock::getFields('unordered_list_block'), array('label' => 'Simple dotted List'))
                 ->addLayout('big_text', array(
                     'label' => 'Big Text in Container',
@@ -121,7 +122,15 @@ class TilesFields {
             ->endFlexibleContent()
         ->endRepeater();
 
-        $cards_fields->addLink('action_link', array(
+        $cards_fields->addTextarea('action_intro', array(
+            'label' => 'Text above the action link',
+            'instructions' => 'Optional lead-in shown directly above the button.',
+            'required' => 0,
+            'rows' => 3,
+            'wrapper' => ['width' => '100%']
+        ))
+
+        ->addLink('action_link', array(
             'label' => 'Action Link',
             'instructions' => '',
             'required' => 0,

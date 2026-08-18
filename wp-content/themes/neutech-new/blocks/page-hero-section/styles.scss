@@ -201,7 +201,9 @@
 
             &:first-child {
                 inset-block-start: 30%;
-                inset-inline-start: -70%;
+                // markup #24 — was -70%, which pushed this photo entirely off
+                // the canvas below the desktop breakpoint (invisible, not bled).
+                inset-inline-start: -25%;
 
                 @include media($bp-desktop) {
                     inset-block-start: 20svh;
@@ -222,32 +224,37 @@
                     inset-block-start: 10%;
                 }
 
+                // markup #24 — was -19%, which pushed the tallest photo of the
+                // collage a third of the way off the top of the hero.
                 @include media($bp-desktop) {
                     inset-inline-start: 33%;
-                    inset-block-start: -19%;
+                    inset-block-start: 1%;
                 }
 
                 @include media($bp-wide) {
-
+                    inset-block-start: 1%;
                 }
-            } 
+            }
 
             &:nth-child(3) {
                 inset-block-start: 30%;
-                inset-inline-end: -40%;
+                // markup #24 — trimmed from -40% / -10% so the photo bleeds off
+                // the right edge instead of hanging most of its width outside.
+                inset-inline-end: -10%;
 
                 @include media($bp-tablet) {
                     inset-block-start: 20%;
-                    inset-inline-end: -10%;
+                    inset-inline-end: -2%;
                 }
                 @include media($bp-desktop) {
                     inset-inline-start: 65%;
                     inset-block-start: 20%;
                 }
 
+                // markup #24 — was -2%, clipping the top edge of the photo.
                 @include media($bp-wide) {
                     inset-inline-start: 60%;
-                    inset-block-start: -2%;
+                    inset-block-start: 3%;
                 }
 
                 @include media($bp-full-hd) {
@@ -264,13 +271,15 @@
                     inset-inline-start: 20%;
                 }
 
+                // markup #24 — was -10% / -20%, running the photo off the
+                // bottom of the hero on wide screens.
                 @include media($bp-wide) {
-                    inset-block-end: -10%;
+                    inset-block-end: 3%;
                 }
 
                 @include media($bp-full-hd) {
                     max-width: 65rem;
-                    inset-block-end: -20%;
+                    inset-block-end: 3%;
                 }
             }
 

@@ -42,6 +42,9 @@
                     case 'ticked_list_block':
                         ListBlock::render( $layout['list_items'], 'ticked-list text-card__list fz-p' );
                         break;
+                    case 'crossed_list_block':
+                        ListBlock::render( $layout['list_items'], 'crossed-list text-card__list fz-p' );
+                        break;
                     case 'unordered_list_block':
                         ListBlock::render( $layout['list_items'], 'ul-list text-card__list fz-p' );
                         break;
@@ -66,6 +69,7 @@
     $title = $heading['section_title'] ?: '';
     $subtitle = $heading['section_subtitle'];
     $link = get_field('action_link');
+    $action_intro = get_field('action_intro');
     $cards = get_field('cards');
     $enable_arrow = $settings['enable_arrows'];
     $enable_tick = $settings['enable_tick_icons'];
@@ -121,6 +125,10 @@
                     </article>
                 <?php endforeach; ?>
             </div>
+        <?php endif;?>
+
+        <?php if ($action_intro):?>
+            <p class="cards__action-intro fz-p"><?= wp_kses_post($action_intro) ?></p>
         <?php endif;?>
 
         <?php if (is_array($link) && !empty($link)):?>
