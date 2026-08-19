@@ -169,6 +169,10 @@
     align-items: center;
     gap: .4rem;
     padding: .4rem .4rem .4rem 1.8rem;
+    // Text-only variants (e.g. white-border secondary with no icon circle) must
+    // match the height the accent icon (.btn__icon-wr) gives the primary button,
+    // otherwise the two hero buttons render at different heights and misalign.
+    min-block-size: 4rem; // icon 3.2rem + padding .4rem*2
 
     @include media($bp-mobile) {
         gap: .6rem;
@@ -179,15 +183,32 @@
         gap: .8rem;
         padding: .8rem .8rem .8rem 2.4rem;
     }
-    
+
     @include media($bp-desktop) {
         gap: 0.286em;
         padding: 0.286em 0.286em 0.286em 0.857em;
+        min-block-size: 2.286em; // icon 1.714em + padding .286em*2
     }
-    
+
     @include media($bp-full-hd) {
         gap: .8rem;
         padding: .8rem .8rem .8rem 2.4rem;
+        min-block-size: 6.4rem; // icon 4.8rem + padding .8rem*2
+    }
+
+    // Text-only variant (no icon circle, e.g. the white-border "See our work" /
+    // "Our solutions" secondary buttons). The paddings above are asymmetric —
+    // they reserve room on the right for the icon — so without one the label
+    // sits pushed to the left. Balance the right padding to the left and centre
+    // the label. Site-wide: hero + above-footer secondary buttons on every page.
+    &:not(:has(.btn__icon-wr)) {
+        justify-content: center;
+        padding-inline-end: 1.8rem;
+
+        @include media($bp-mobile)  { padding-inline-end: 2rem; }
+        @include media($bp-tablet)  { padding-inline-end: 2.4rem; }
+        @include media($bp-desktop) { padding-inline-end: 0.857em; }
+        @include media($bp-full-hd) { padding-inline-end: 2.4rem; }
     }
 
     .btn {

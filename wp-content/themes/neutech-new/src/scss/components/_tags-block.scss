@@ -1,0 +1,10 @@
+.tags-block {
+    gap: .8rem;
+
+    &__tag {
+        padding: .3em .6em;
+        border-radius: 1.1em;
+        border: .2rem solid currentColor;
+    }
+}
+// End inner

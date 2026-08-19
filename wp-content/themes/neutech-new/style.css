@@ -1,0 +1,10 @@
+/*
+Theme Name: Neutech
+Theme URI: https://neutech.co
+Author: Tely
+Description: Custom block-capable theme for Neutech Inc. Assets are compiled to /build and enqueued via the CleanTheme\Enqueue class; this file exists to register the theme with WordPress.
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 8.1
+Text Domain: neutech
+*/

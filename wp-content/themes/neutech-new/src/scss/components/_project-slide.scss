@@ -1,0 +1,33 @@
+.project-slide {
+    border-radius: 2.4rem;
+
+    @include media($bp-desktop) {
+        border-radius: 4.8rem;
+    }
+
+    &__img-wrap {
+        &::after {
+            @include pseudo;
+            @include push-full;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    }
+    
+    &__content {
+        padding: 2.4rem;
+        z-index: 1;
+
+        @include media($bp-desktop) {
+            padding: 4.8rem;
+        }
+    }
+
+    &__slide-title {
+        margin-block-end: 1.8rem;
+    }
+
+    &__link {
+        opacity: 0;
+    }
+}
+// End inner

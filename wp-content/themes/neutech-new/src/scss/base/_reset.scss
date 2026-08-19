@@ -76,6 +76,16 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
+// Display headings must never break mid-word: at display sizes `break-word`
+// strands a single letter on its own line ("commitmen" / "t"). Long words are
+// allowed to overflow their box instead — the display type is set in wide
+// columns where real words always fit. (markup #27)
+h1, h2, h3 {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
 #root, #__next {
   isolation: isolate;
 }

@@ -1,0 +1,31 @@
+.dotted-list {
+
+    li {
+        position: relative;
+        padding-inline-start: 3.2rem;
+
+        &::before, &::after {
+            @include pseudo;
+            border-radius: 50%;
+            inset-block-start: 15%;
+            inset-inline-start: 0;
+        }
+
+        &::before {
+            @include square(1.6rem);
+            border: .15rem solid rgba($c-action-solid, .35);
+        }
+
+        &::after {
+            @include square(.4rem);
+            inset-inline-start: .6rem;
+            inset-block-start:  calc(15% + .6rem);
+            background-color: $c-action-solid;
+        }
+
+        &:not(:last-child) {
+            margin-block-end: 1rem;
+        }
+    }
+}
+// End inner

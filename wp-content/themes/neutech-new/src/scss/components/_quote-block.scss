@@ -1,0 +1,28 @@
+.quote-block {
+    gap: 2.4rem;
+    font-family: var(--wp--preset--font-family--heading);
+    font-weight: 500;
+    line-height: normal;
+
+    &__icon {
+        width: 1.9rem;
+        height: 2.4rem;
+        flex-shrink: 0;
+
+        @include media($bp-desktop) {
+            width: 3rem;
+            height: 3.7rem;
+        }
+    }
+
+    blockquote {
+        margin-block-start: -.3em;  
+    }
+
+    p {
+        &:not(:last-child) {
+            margin-block-end: 1em;
+        }
+    }
+}
+// End inner

@@ -1,0 +1,22 @@
+{
+    "name": "acf/cta-section",
+    "title": "CTA Band",
+    "description": "A dark, centered call-to-action band with two buttons.",
+    "category": "neutech",
+    "icon": "megaphone",
+    "keywords": ["cta", "call to action", "band"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

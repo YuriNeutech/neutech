@@ -1,0 +1,24 @@
+// Scoped typography reset for client marketing pages ported from Kinsta staging.
+// Our theme applies a global `h1..h4 { text-transform: lowercase }` brand style for
+// the funnel pages; Yuri's original marketing pages use sentence/Title case + an
+// opt-in `.lower` utility. Scope those originals to `.ntc-ported` (see body_class).
+.ntc-ported {
+    h1, h2, h3, h4 { text-transform: none; }
+    .lower { text-transform: lowercase; }
+    .fz-h1, .fz-h2, .fz-h3, .fz-h4 { line-height: normal; }
+}
+
+// ── Client QA round 2 (markup.io, Aug 2026) ─────────────────────
+// The Wave: the phase rows pair a tall decorative graphic with short copy,
+// so top-aligned columns leave the text stranded at the top of a very tall
+// row. Centre the columns on this page only. (markup #12)
+.ntc-page-the-neutech-wave {
+    .two-col__container { align-items: center; }
+}
+
+// Senior Level (Redefined): the short "Why this matters to you" row stacks its
+// own 144px bottom padding on top of the closing CTA's 144px top padding, so the
+// copy floats in ~290px of dead space. Collapse the first half. (markup #22)
+.ntc-page-senior-level-redefined {
+    .two-col:has(+ .text-button) { padding-block-end: 0; }
+}

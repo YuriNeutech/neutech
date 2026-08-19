@@ -1,0 +1,17 @@
+{
+    "name": "acf/text-button-block-section",
+    "title": "CTA Banner",
+    "category": "neutech",
+    "keywords": ["title", "text", "content", "link", "button"],
+    "icon": "align-full-width",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

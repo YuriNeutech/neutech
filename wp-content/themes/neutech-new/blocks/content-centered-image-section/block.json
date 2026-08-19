@@ -1,0 +1,17 @@
+{
+    "name": "acf/content-centered-image-section",
+    "title": "Centered Image Section",
+    "category": "neutech",
+    "keywords": ["image", "list", "content", "link"],
+    "icon": "align-wide",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

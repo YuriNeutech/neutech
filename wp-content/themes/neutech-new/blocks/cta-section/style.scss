@@ -1,0 +1,35 @@
+// ── CTA band ─────────────────────────────────────────────────
+.lp-cta {
+    background: $c-black;
+    color: $c-white;
+    text-align: center;
+    overflow: hidden;
+
+    // Accent-tinted seam separating this closer from the dark band above.
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: .1rem;
+        background: linear-gradient(90deg, transparent, rgba($c-action-solid, .55), transparent);
+    }
+
+    &__glow {
+        width: 54%; height: 22vh; background: $c-action; top: 16%;
+        @include push--center; border-radius: 50%; filter: blur(9rem); opacity: .5;
+    }
+
+    &__inner { position: relative; z-index: 1; max-width: 76rem; margin-inline: auto; }
+
+    &__title {
+        font-family: var(--wp--preset--font-family--heading);
+        font-size: var(--fz-h2);
+        line-height: 1.03;
+        letter-spacing: -.02em;
+        text-wrap: balance;
+    }
+
+    &__text { margin-top: 2.2rem; font-size: var(--fz-p); color: #C9C9CE; }
+
+    &__actions { margin-top: 4rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.6rem 2rem; }
+}

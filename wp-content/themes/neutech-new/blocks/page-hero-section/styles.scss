@@ -1,0 +1,307 @@
+.page-hero {
+    padding-block: 12.8rem 2.4rem;
+
+    @include media($bp-wide) {
+        min-height: 100svh;
+        padding-block: 18.6rem;
+    }
+
+    &__blur-bg {
+        width: 300%;
+        height: 20vh;
+        background: $c-action;
+        bottom: 20%;
+        @include push--center;
+        border-radius: 50%;
+        filter: blur(8rem);
+        opacity: .4;
+        
+        @include media($bp-desktop) {
+            height: 100vh;
+            top: -70%;
+            filter: blur(30rem);
+            width: 100%;
+            display: block;
+        }
+    }
+    // End Bg
+
+    &__container {
+        justify-content: space-between;
+        gap: 2.4rem;
+    }
+
+    &__content {
+        @include media($bp-wide) {
+            margin-block: auto;
+        }
+    }
+
+    &__tag {
+        margin-block-end: 6rem;
+        display: block;
+
+        // @include media($bp-wide) {
+        //     margin-block-end: 9rem;
+        // }
+    }
+
+    &__subtitle {
+        margin-block-start: 3.2rem;
+
+        // @include media($bp-wide) {
+        //     margin-block-start: 6rem;
+        // }
+    }
+
+    &__title {
+        em {
+            font-style: normal;
+
+            @include media($bp-wide) {
+                font-style: normal;
+                white-space: nowrap;
+                position: relative;
+                border-radius: 2em;
+                padding: .01em .15em .05em;
+                margin-inline: -.15em;
+
+                --highlight-progress: 0%;
+
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: var(--highlight-progress);
+                    opacity: var(--highlight-opacity);
+                    background: linear-gradient(103deg, rgba(239, 63, 80, 0.04) 103.82%, rgba(239, 63, 80, 0.00) 103.82%, rgba(239, 63, 80, 0.04) 103.82%);
+                    box-shadow: inset 0 4px 15px rgba(239, 63, 80, 0.15),
+                                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                    
+                    backdrop-filter: blur(4px);
+                    -webkit-backdrop-filter: blur(4px);
+                    
+                    border-radius: 2em;
+                    z-index: -1;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+
+    &__word-new-p {
+        display: block;
+        // opacity: 0; 
+        // visibility: hidden;
+        transform: translateY(3rem);
+        will-change: transform, opacity, filter;
+    }
+    // End new P
+
+    &__word-new-line {
+        display: block;
+        content: "";
+        margin: 0;
+    }
+
+    &__btn {
+        width: max-content;
+        margin-block-start: 2.4rem;
+
+        @include media($bp-wide) {
+            display: none;
+        }
+    }
+
+    &__hidden-link {
+        opacity: 0;
+        z-index: 2;
+    }
+
+    &__scroll-icon {
+        @include media($bp-desktop) {
+            display: block;
+            position: absolute;
+            @include push--center-middle;
+            z-index: 3;
+            @include el-hide;
+        }
+    }
+
+    &--with-features {
+        @include media($bp-wide) {
+            padding-block: 18.6rem 6.4rem;
+
+            .page-hero {
+                &__content {
+                    margin-block: 0;
+                }
+            }
+        }
+    }
+}
+// End inner
+
+.page-hero--type_images {
+    min-height: 180vw;
+    padding-block: 6.4rem;
+
+    @include media($bp-tablet) {
+        min-height: 100vw;
+    }
+
+    @include media($bp-desktop) {
+        min-height: 100svh;
+    }
+
+    .page-hero {
+        &__bg-images {
+            opacity: .3;
+        }
+
+        &__bg-image {
+            max-width: 60vw;
+
+            @include media($bp-tablet) {
+                max-width: 40vw;
+            }
+
+            @include media($bp-desktop) {
+                max-width: 34rem;
+            }
+
+            @include media($bp-wide) {
+                max-width: 42rem;
+            }
+
+            @include media($bp-full-hd) {
+                max-width: 54rem;
+            }
+        }
+
+        &__content {
+            text-align: center;
+        }
+
+        &__container {
+            justify-content: center;
+        }
+
+        &__btn {
+            margin-block-start: 6.4rem;
+            margin-inline: auto;
+        }
+
+        &__bg-image {
+            z-index: 1;
+
+            &:first-child {
+                inset-block-start: 30%;
+                // markup #24 — was -70%, which pushed this photo entirely off
+                // the canvas below the desktop breakpoint (invisible, not bled).
+                inset-inline-start: -25%;
+
+                @include media($bp-desktop) {
+                    inset-block-start: 20svh;
+                    inset-inline-start: 2vw;
+                }
+
+                @include media($bp-wide) {
+                    inset-block-start: 20svh;
+                    inset-inline-start: 10vw;
+                }
+            }
+
+            &:nth-child(2) {
+                inset-block-start: 20%;
+                inset-inline-start: 10%;
+
+                @include media($bp-tablet) {
+                    inset-block-start: 10%;
+                }
+
+                // markup #24 — was -19%, which pushed the tallest photo of the
+                // collage a third of the way off the top of the hero.
+                @include media($bp-desktop) {
+                    inset-inline-start: 33%;
+                    inset-block-start: 1%;
+                }
+
+                @include media($bp-wide) {
+                    inset-block-start: 1%;
+                }
+            }
+
+            &:nth-child(3) {
+                inset-block-start: 30%;
+                // markup #24 — trimmed from -40% / -10% so the photo bleeds off
+                // the right edge instead of hanging most of its width outside.
+                inset-inline-end: -10%;
+
+                @include media($bp-tablet) {
+                    inset-block-start: 20%;
+                    inset-inline-end: -2%;
+                }
+                @include media($bp-desktop) {
+                    inset-inline-start: 65%;
+                    inset-block-start: 20%;
+                }
+
+                // markup #24 — was -2%, clipping the top edge of the photo.
+                @include media($bp-wide) {
+                    inset-inline-start: 60%;
+                    inset-block-start: 3%;
+                }
+
+                @include media($bp-full-hd) {
+                    inset-inline-start: 65%;
+                }
+            }
+
+            &:nth-child(4) {
+                inset-block-end: 2%;
+                inset-inline-start: -10%;
+
+                @include media($bp-desktop) {
+                    inset-block-end: 2%;
+                    inset-inline-start: 20%;
+                }
+
+                // markup #24 — was -10% / -20%, running the photo off the
+                // bottom of the hero on wide screens.
+                @include media($bp-wide) {
+                    inset-block-end: 3%;
+                }
+
+                @include media($bp-full-hd) {
+                    max-width: 65rem;
+                    inset-block-end: 3%;
+                }
+            }
+
+            &:last-child {
+                inset-block-end: 15%;
+                inset-inline-end: -36%;
+
+                @include media($bp-tablet) {
+                    inset-block-end: 10%;
+                    inset-inline-end: 0%;
+                }
+
+                @include media($bp-wide) {
+                    inset-inline-start: 60%;
+                    inset-block-end: 5%;
+                }
+
+                @include media($bp-full-hd) {
+                    inset-inline-start: 65%;
+                }
+            }
+        }
+    }
+}
+// End by TYPE

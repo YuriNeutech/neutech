@@ -1,5 +1,5 @@
 .preloader {
-    // position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -8,20 +8,76 @@
     justify-content: center;
     align-items: center;
     z-index: z('preloader');
-    // background: $c-black;
+    background: $c-black;
+    overflow: hidden;
 
     &__logo-wr {
         width: 42vw;
-        
-        svg {
-            width: 100%;
-            height: auto;
-            overflow: visible;
+        max-width: 90rem;
+        min-width: 28rem;
+    }
 
-            .logo-text, .logo-dot {
-                visibility: hidden; 
-                opacity: 0;
-            }
+    // Animated brand logo (original inline SVG: 7 .logo-text letter paths + .logo-dot)
+    &__wordmark {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 42vw;
+            max-width: 90rem;
+            min-width: 28rem;
+            height: auto;
         }
+    }
+
+    // Letter paths animate in (staggered); dot pops after. Keep the inline
+    // SVG fills (white letters / #EF3F50 dot) — GSAP only touches alpha/transform.
+    .logo-text {
+        visibility: hidden;
+        opacity: 0;
+        will-change: transform, opacity;
+    }
+
+    .logo-dot {
+        visibility: hidden;
+        opacity: 0;
+        will-change: transform, opacity;
+    }
+
+    // Legacy path: if a real SVG logo is ever set via ACF, keep its hooks hidden too.
+    &__logo-wr svg .logo-text,
+    &__logo-wr svg .logo-dot {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+// Header / nav wordmark (fallback when no uploaded SVG logo)
+.brandmark {
+    font-family: var(--wp--preset--font-family--heading);
+    font-weight: 500;
+    letter-spacing: -.02em;
+    line-height: 1;
+
+    &__dot { color: $c-action; }
+}
+
+// When the header falls back to the wordmark, size it to the header (the
+// fixed .header__logo box is dimensioned for an SVG and would clip text).
+.header__logo--wordmark {
+    width: auto;
+    height: auto;
+    display: inline-flex;
+    align-items: center;
+
+    .brandmark {
+        font-size: 2.2rem;
+        color: var(--header-elements-color);
+        white-space: nowrap;
+        transition: color .4s ease;
+
+        @include media($bp-desktop) { font-size: 2vw; }
+        @include media($bp-full-hd) { font-size: 3.4rem; }
     }
 }

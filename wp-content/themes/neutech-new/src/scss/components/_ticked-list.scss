@@ -1,0 +1,30 @@
+.ticked-list {
+    li {
+        position: relative;
+        padding-inline-start: 2.8rem;
+
+        &:not(:last-child) {
+            margin-block-end: .6em;
+        }
+
+        &::before {
+            @include pseudo;
+            background-color: currentColor; 
+            -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 14"><path d="M0.738281 5.06487L6.74297 11.6729L12.7474 5.06487L16.7383 0.672852" stroke="black" stroke-width="2" fill="none"/></svg>');
+            mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 14"><path d="M0.738281 5.06487L6.74297 11.6729L12.7474 5.06487L16.7383 0.672852" stroke="black" stroke-width="2" fill="none"/></svg>');
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            mask-size: contain;
+            width: 1.2rem;
+            height: .8rem;
+            inset-block-start: 30%;
+            inset-inline-start: 0;
+
+            @include media($bp-desktop) {
+                width: 1.6rem;
+                height: 1.1rem;
+            }
+        }
+    }
+}
+// End inner

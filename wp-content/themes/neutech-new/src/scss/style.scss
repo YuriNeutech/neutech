@@ -9,6 +9,7 @@
 @import 'base/layout';
 @import 'base/bg';
 @import 'base/display';
+@import 'base/pb';
 
 // 3. Components (Site Structure)
 @import 'components/preloader';
@@ -22,6 +23,7 @@
 @import 'components/header';
 @import 'components/progress';
 @import 'components/footer';
+@import 'components/sections';
 
 // 4. Blocks
 @import '../../blocks/hero-section/style';
@@ -29,3 +31,41 @@
 @import '../../blocks/video-section/style';
 @import '../../blocks/process-steps-section/style';
 @import '../../blocks/link-with-arrow/style.scss';
+
+// 4b. Landing-page section blocks (converted from PHP partials)
+@import '../../blocks/rich-text-section/style';
+@import '../../blocks/cards-section/style';
+@import '../../blocks/stats-section/style';
+@import '../../blocks/cta-section/style';
+@import '../../blocks/faq-section/style';
+@import '../../blocks/lead-form-section/style';
+@import '../../blocks/insights-section/style';
+
+// 4c. Ported client marketing-page blocks (from Kinsta staging) — shared components
+@import 'components/text-card';
+@import 'components/flywheel-card';
+@import 'components/project-slide';
+@import 'components/features-list';
+@import 'components/tagline';
+@import 'components/bordered-list';
+@import 'components/dotted-list';
+@import 'components/ul-list';
+@import 'components/ticked-list';
+@import 'components/crossed-list';
+@import 'components/quote-block';
+@import 'components/tags-block';
+@import 'sections/two-col';
+
+// 4d. Ported client marketing-page block styles
+@import '../../blocks/page-hero-section/styles.scss';
+@import '../../blocks/text-content-section/styles.scss';
+@import '../../blocks/text-button-block-section/styles.scss';
+@import '../../blocks/content-centered-image-section/styles.scss';
+@import '../../blocks/features-grid-section/styles.scss';
+@import '../../blocks/wheel-section/styles.scss';
+@import '../../blocks/projects-slider-section/styles.scss';
+@import '../../blocks/tiles-section/styles.scss';
+@import '../../blocks/media-video-section/style';
+
+// 4e. Ported marketing-page typography scope
+@import 'components/ported-overrides';

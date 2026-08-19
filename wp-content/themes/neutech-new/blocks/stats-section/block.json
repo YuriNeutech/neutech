@@ -1,0 +1,22 @@
+{
+    "name": "acf/stats-section",
+    "title": "Stats Section",
+    "description": "A dark strip of stat figures with labels.",
+    "category": "neutech",
+    "icon": "chart-bar",
+    "keywords": ["stats", "numbers", "metrics"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

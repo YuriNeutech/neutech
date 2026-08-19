@@ -1,0 +1,22 @@
+{
+    "name": "acf/lead-form-section",
+    "title": "Lead Form Section",
+    "description": "A dark 'get a quote' section with an async lead-capture form.",
+    "category": "neutech",
+    "icon": "email-alt",
+    "keywords": ["form", "lead", "contact", "quote"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

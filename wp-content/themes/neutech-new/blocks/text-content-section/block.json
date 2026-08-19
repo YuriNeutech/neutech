@@ -1,0 +1,17 @@
+{
+    "name": "acf/text-content-section",
+    "title": "Text Banner",
+    "category": "neutech",
+    "keywords": ["title", "text", "content"],
+    "icon": "editor-aligncenter",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

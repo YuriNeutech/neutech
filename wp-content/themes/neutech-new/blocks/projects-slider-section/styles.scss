@@ -1,0 +1,119 @@
+.projects-slider {
+    &__slider {
+        max-width: 90vw;
+
+        @include media($bp-desktop) {
+            width: max(45vw, 78.4rem);
+            margin: 0;
+            max-width: 50vw;
+            overflow: visible;
+        }
+    }
+
+    &__container {
+        align-items: unset;
+    }
+
+    // Bottom-align the copy with the carousel so both columns end on the same
+    // line and the section keeps its padding rhythm at every width. (markup #17)
+    &__bottom.two-col__container {
+        align-items: end;
+    }
+
+    &__slide {
+        flex: 0 0 auto;
+        min-width: 0;
+        width: 100%;
+        min-height: 65vw;
+
+        &:not(:last-child) {
+            margin-inline-end: 1rem;
+        }
+
+        @include media($bp-desktop) {
+            min-height: 58.8rem;
+        }
+    }
+
+    &__btn {
+        @include square(4.8rem);
+        background-color: transparent;
+        border: none;
+        color: $c-white;
+        
+        &--prev {
+            transform: rotate(180deg);
+        }
+
+        &[disabled] {
+            pointer-events: none;
+            opacity: .3;
+        }
+    }
+
+    &__pagination {
+        gap: .7rem
+        
+    }
+
+    &__dot {
+        @include square(2.4rem);
+        border-radius: 50%;
+        background-color: transparent;
+        border: .1rem solid transparent;
+        position: relative;
+        transition: all .3s ease-in-out;
+
+        &::after {
+            @include pseudo;
+            @include push--center-middle;
+            border-radius: 50%;
+            background-color: $c-action;
+            @include square(.2rem);
+        }
+
+        &.is-active {
+            border-color: rgba(239, 63, 80, 0.40);
+            transform: scale(2);
+            margin-inline: 1.2rem;
+        }
+    }
+
+    &__nav {
+        margin-block-start: 1.2rem;
+
+        @include media($bp-desktop) {
+            display: none;
+        }
+    }
+
+    &__bottom {
+        @include media($bp-desktop) {
+            margin-block-start: 6.4rem;
+        }
+
+        @include media($bp-wide) {
+            margin-block-start: 9.6rem;
+        }
+    }
+
+    &__slider-wr {
+        @include media($bp-desktop) {
+            width: 60vw;
+            overflow: hidden;
+        }
+    }
+
+    &__scroll-icon {
+        display: none;
+
+        @include media($bp-desktop) {
+            display: block;
+            position: absolute;
+            inset-inline-end: 17rem;
+            inset-block-start: 18.1rem;
+            pointer-events: none;
+        }
+    }
+}
+// End inner
