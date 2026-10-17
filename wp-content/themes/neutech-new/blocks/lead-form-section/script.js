@@ -7,7 +7,7 @@ export default function initLeadForm() {
 
     document.addEventListener('submit', (e) => {
         const form = e.target.closest('.lp-form__form');
-        if (!form) return;
+        if (!form || form.matches('[data-tely-cta="native"]')) return;
         e.preventDefault();
 
         const status = form.querySelector('.lp-form__status');
@@ -30,7 +30,7 @@ export default function initLeadForm() {
         const endpoint = form.getAttribute('action');
 
         fetch(endpoint, { method: 'POST', body: new FormData(form) })
-            .then((r) => r.json().catch(() => ({ success: r.ok })))
+            .then((r) => r.json())
             .then((res) => {
                 if (res && res.success && res.file) {
                     // Gated download: hand the file over immediately, and leave a
@@ -47,7 +47,9 @@ export default function initLeadForm() {
                     status.textContent = "Thanks — we'll be in touch within one business day.";
                 } else {
                     status.className = 'lp-form__status is-err';
-                    status.textContent = 'Something went wrong. Email us at info@neutech.co.';
+                    status.textContent = res && res.error === 'quote_form_moved'
+                        ? res.message
+                        : 'Something went wrong. Email us at info@neutech.co.';
                 }
             })
             .catch(() => {

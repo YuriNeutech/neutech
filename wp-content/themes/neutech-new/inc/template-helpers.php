@@ -129,6 +129,11 @@ if ( ! function_exists('neutech_preloader_wordmark') ) {
 add_action('wp_ajax_neutech_lead', 'neutech_handle_lead');
 add_action('wp_ajax_nopriv_neutech_lead', 'neutech_handle_lead');
 function neutech_handle_lead() {
+    $magnet = sanitize_key($_POST['magnet'] ?? '');
+    if ($magnet === '') {
+        wp_send_json(['success' => false, 'error' => 'quote_form_moved', 'retryable' => false,
+            'message' => 'This form has moved. Your answers are still on this page. Reload to use the current form, or email info@neutech.co.'], 409);
+    }
     if ( ! isset($_POST['neutech_lead_nonce']) || ! wp_verify_nonce($_POST['neutech_lead_nonce'], 'neutech_lead') ) {
         wp_send_json(['success' => false, 'error' => 'bad_nonce']);
     }
@@ -138,7 +143,6 @@ function neutech_handle_lead() {
     $type    = sanitize_text_field($_POST['project_type'] ?? '');
     $message = sanitize_textarea_field($_POST['message'] ?? '');
     // Gated-download leads carry the magnet slug instead of a project brief.
-    $magnet  = sanitize_key($_POST['magnet'] ?? '');
     if ($magnet) {
         $type    = 'Guide download: ' . $magnet;
         $message = 'Downloaded the gated guide "' . $magnet . '".';
