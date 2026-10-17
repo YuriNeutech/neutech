@@ -6,11 +6,7 @@
 $a = $args ?? [];
 $opts = $a['options'] ?? ['Custom software', 'Healthcare software', 'Web app', 'Mobile app', 'Staff augmentation', 'Something else'];
 $connection = get_option('tely_cta_connection', []);
-$ready = is_array($connection) && !empty($connection['contextUrl'])
-    && !empty($connection['submissionsUrl']) && !empty($connection['embedScriptUrl']);
-if ($ready && !wp_script_is('neutech-native-forms', 'enqueued')) {
-    wp_enqueue_script('neutech-native-forms', $connection['embedScriptUrl'], [], null, true);
-}
+$ready = neutech_tely_form_ready($connection);
 $id = (string) ($a['id'] ?? '');
 $class = 'lp-section lp-section--dark lp-form' . (!empty($a['className']) ? ' ' . $a['className'] : '');
 ?>
