@@ -122,7 +122,7 @@ if ( ! function_exists('neutech_preloader_wordmark') ) {
     }
 }
 
-/** One shared native loader for quote and resource forms. */
+/** One shared native loader for the site's forms. */
 function neutech_tely_form_ready($connection) {
     if (!is_array($connection) || empty($connection['contextUrl'])
         || empty($connection['submissionsUrl']) || empty($connection['embedScriptUrl'])) return false;
