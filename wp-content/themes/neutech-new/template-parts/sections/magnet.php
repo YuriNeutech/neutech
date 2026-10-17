@@ -1,19 +1,16 @@
 <?php
 /**
- * Gated download. Name + work email, then the file starts downloading.
- * $args: eyebrow, title, intro, magnet (slug registered in the `neutech_magnets`
- * option), label (button text), note.
- *
- * Shares the `neutech_lead` admin-ajax endpoint and the .lp-form__form async
- * handler; the `magnet` hidden field is what turns the response into a file URL.
+ * Name/email capture with the accepted Tely completion link.
+ * $args: eyebrow, title, intro, magnet (connection key), label, note.
  */
 $a      = $args ?? [];
 $magnet = $a['magnet'] ?? '';
-$file   = function_exists('neutech_magnet_url') ? neutech_magnet_url($magnet) : '';
-$ajax   = esc_url(admin_url('admin-ajax.php'));
+$connections = get_option('tely_cta_connections', []);
+$connection = is_array($connections) ? ($connections[$magnet] ?? []) : [];
 
-// Nothing to hand over yet — don't show a form that can't deliver.
-if (!$file) return;
+// The prepared owner artifact must include a configured resource result.
+if (!is_array($connection) || empty($connection['definition']['completionLink'])
+    || !neutech_tely_form_ready($connection)) return;
 ?>
 <section class="lp-section lp-section--dark lp-form lp-magnet" data-header-theme="dark">
     <div class="lp-cta__glow absolute"></div>
@@ -25,16 +22,17 @@ if (!$file) return;
                 <?php if (!empty($a['intro'])): ?><p class="lp-intro"><?= esc_html($a['intro']); ?></p><?php endif; ?>
             </div>
 
-            <form class="lp-form__form lp-magnet__form" action="<?= $ajax; ?>" method="post" novalidate>
-                <input type="hidden" name="action" value="neutech_lead">
-                <input type="hidden" name="magnet" value="<?= esc_attr($magnet); ?>">
-                <?php wp_nonce_field('neutech_lead', 'neutech_lead_nonce'); ?>
+            <form class="lp-form__form lp-magnet__form" method="post" onsubmit="return false;" data-tely-cta="native"
+                  data-tely-context-url="<?= esc_url($connection['contextUrl']); ?>"
+                  data-tely-submissions-url="<?= esc_url($connection['submissionsUrl']); ?>">
+                <fieldset disabled data-tely-pending style="border:0;padding:0;margin:0;min-width:0;display:contents">
                 <div class="lp-form__row">
                     <label class="lp-form__field"><span>Name</span>
-                        <input type="text" name="name" required autocomplete="name"></label>
+                        <input type="text" name="name" data-tely-field="name" required autocomplete="name"></label>
                     <label class="lp-form__field"><span>Work email</span>
-                        <input type="email" name="email" required autocomplete="email"></label>
+                        <input type="email" name="email" data-tely-field="email" required autocomplete="email"></label>
                 </div>
+                <div hidden aria-hidden="true"><label>Website<input type="text" name="company_website" data-tely-field="website" tabindex="-1" autocomplete="off"></label></div>
                 <div class="lp-form__actions">
                     <button type="submit" class="btn btn--theme-accent btn--cta-md relative">
                         <span class="btn__text-wr"><?= esc_html($a['label'] ?? 'Download Comparison Guide'); ?></span>
@@ -42,7 +40,9 @@ if (!$file) return;
                     </button>
                     <span class="lp-form__note"><?= esc_html($a['note'] ?? 'The PDF opens straight away. We never share your details.'); ?></span>
                 </div>
-                <p class="lp-form__status" role="status" aria-live="polite"></p>
+                <p class="lp-form__status" data-tely-status role="status" aria-live="polite"></p>
+                </fieldset>
+                <noscript>This form requires JavaScript. Please email info@neutech.co.</noscript>
             </form>
         </div>
     </div>

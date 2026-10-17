@@ -122,59 +122,24 @@ if ( ! function_exists('neutech_preloader_wordmark') ) {
     }
 }
 
-/**
- * Lead form handler (Get a Quote). Saves the lead as a private CPT-less post-meta
- * record and emails the site admin. Returns JSON for the async form.
- */
+/** One shared native loader for the site's forms. */
+function neutech_tely_form_ready($connection) {
+    if (!is_array($connection) || empty($connection['contextUrl'])
+        || empty($connection['submissionsUrl']) || empty($connection['embedScriptUrl'])) return false;
+    if (wp_script_is('neutech-native-forms', 'enqueued')) {
+        $scripts = wp_scripts();
+        return isset($scripts->registered['neutech-native-forms'])
+            && $scripts->registered['neutech-native-forms']->src === $connection['embedScriptUrl'];
+    }
+    wp_enqueue_script('neutech-native-forms', $connection['embedScriptUrl'], [], null, true);
+    return true;
+}
+
+/** Cached forms must not create a parallel intake store or send mail. */
 add_action('wp_ajax_neutech_lead', 'neutech_handle_lead');
 add_action('wp_ajax_nopriv_neutech_lead', 'neutech_handle_lead');
 function neutech_handle_lead() {
-    if ( ! isset($_POST['neutech_lead_nonce']) || ! wp_verify_nonce($_POST['neutech_lead_nonce'], 'neutech_lead') ) {
-        wp_send_json(['success' => false, 'error' => 'bad_nonce']);
-    }
-    $name    = sanitize_text_field($_POST['name'] ?? '');
-    $email   = sanitize_email($_POST['email'] ?? '');
-    $company = sanitize_text_field($_POST['company'] ?? '');
-    $type    = sanitize_text_field($_POST['project_type'] ?? '');
-    $message = sanitize_textarea_field($_POST['message'] ?? '');
-    // Gated-download leads carry the magnet slug instead of a project brief.
-    $magnet  = sanitize_key($_POST['magnet'] ?? '');
-    if ($magnet) {
-        $type    = 'Guide download: ' . $magnet;
-        $message = 'Downloaded the gated guide "' . $magnet . '".';
-    }
-
-    if ( empty($name) || empty($email) || ! is_email($email) ) {
-        wp_send_json(['success' => false, 'error' => 'invalid']);
-    }
-
-    // Store the lead (draft page in a hidden "lead" stash) so nothing is lost locally.
-    $lead_id = wp_insert_post([
-        'post_type'    => 'page',
-        'post_status'  => 'private',
-        'post_title'   => 'Lead: ' . $name . ' (' . $company . ')',
-        'post_content' => "Email: {$email}\nCompany: {$company}\nNeeds: {$type}\n\n{$message}",
-        'post_name'    => 'lead-' . md5($email . microtime()),
-    ]);
-    if ($lead_id) { update_post_meta($lead_id, '_neutech_lead', 1); }
-
-    // Best-effort email (won't send on local, but wired for production).
-    $to = get_option('admin_email');
-    wp_mail($to, 'New Neutech lead: ' . $name, "Name: {$name}\nEmail: {$email}\nCompany: {$company}\nNeeds: {$type}\n\n{$message}");
-
-    $out = ['success' => (bool) $lead_id];
-    if ($magnet) {
-        $out['file'] = neutech_magnet_url($magnet);
-    }
-    wp_send_json($out);
-}
-
-/**
- * Downloadable lead magnets, keyed by slug. The file lives in the media library
- * so the client can swap it without a deploy; the option below holds its ID.
- */
-function neutech_magnet_url($slug) {
-    $map = get_option('neutech_magnets', []);
-    if (empty($map[$slug])) return '';
-    return (string) wp_get_attachment_url($map[$slug]);
+    $magnet = sanitize_key($_POST['magnet'] ?? '');
+    wp_send_json(['success' => false, 'error' => $magnet === '' ? 'quote_form_moved' : 'resource_form_moved', 'retryable' => false,
+        'message' => 'This form has moved. Your answers are still on this page. Reload to use the current form, or email info@neutech.co.'], 409);
 }
