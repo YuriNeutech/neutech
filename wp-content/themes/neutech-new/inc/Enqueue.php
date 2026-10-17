@@ -5,6 +5,11 @@ class Enqueue {
     public function __construct() {
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
         add_action('after_setup_theme', [$this, 'theme_support']);
+        add_action('wp_head', static function () {
+            echo wp_kses(trim((string) get_option('tely_analytics_script_tag', '')), [
+                'script' => ['src' => true, 'data-tely-key' => true, 'async' => true],
+            ]);
+        });
     }
 
     public function theme_support() {
