@@ -17,13 +17,10 @@ class Enqueue {
             $tag = wp_kses(trim((string) get_option('tely_sales_script_tag', '')), [
                 'script' => ['src' => true, 'data-tely-key' => true, 'async' => true],
             ]);
-            echo '<div data-neutech-sales>';
-            if ($tag !== '') {
-                echo $tag;
-            } else {
-                echo '<p>AI chat is unavailable. Please <a href="mailto:info@neutech.co">email the team</a>.</p>';
+            if ($tag === '') {
+                return;
             }
-            echo '</div>';
+            echo '<div data-neutech-sales>' . $tag . '</div>';
         });
     }
 
