@@ -7,7 +7,6 @@ import { MobileCategorySelect } from "./modules/mobileSelect";
 import initListHoverProximity from "./modules/listHoverProximity";
 import BlogPagination from "./modules/blogPagination";
 import initRippleButtons from "./modules/rippleButtons";
-import initNewsletterForm from "./modules/newsletterForm";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -140,5 +139,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }, "-=0.6"); 
     }
 
-    initNewsletterForm();
 });

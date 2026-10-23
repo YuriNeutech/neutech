@@ -5,6 +5,23 @@ class Enqueue {
     public function __construct() {
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
         add_action('after_setup_theme', [$this, 'theme_support']);
+        add_action('wp_head', static function () {
+            echo wp_kses(trim((string) get_option('tely_analytics_script_tag', '')), [
+                'script' => ['src' => true, 'data-tely-key' => true, 'async' => true],
+            ]);
+        });
+        add_action('wp_footer', static function () {
+            if (is_admin() || is_preview() || current_user_can('edit_posts')) {
+                return;
+            }
+            $tag = wp_kses(trim((string) get_option('tely_sales_script_tag', '')), [
+                'script' => ['src' => true, 'data-tely-key' => true, 'async' => true],
+            ]);
+            if ($tag === '') {
+                return;
+            }
+            echo '<div data-neutech-sales>' . $tag . '</div>';
+        });
     }
 
     public function theme_support() {
